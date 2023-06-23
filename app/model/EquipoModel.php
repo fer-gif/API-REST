@@ -1,8 +1,6 @@
-<<<<<<< HEAD
-<?
-=======
+
 <?php
-require_once 'model/Conexion.php';
+require_once 'Conexion.php';
 class EquipoModel
 {
     private $connection;
@@ -97,4 +95,3 @@ class EquipoModel
         return $response;
     }
 }
->>>>>>> features

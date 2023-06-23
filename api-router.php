@@ -1,6 +1,6 @@
 <?php
 require_once './libs/Router.php';
-require_once './app/api-controllers/EquipoController.php';
+require_once './app/controller/EquipoController.php';
 
 // crea el router
 $router = new Router();
@@ -18,14 +18,14 @@ api/equipos
 api/equipos/:id		  
 api/equipos/:id		   */
 $router->addRoute('equipos', 'GET', 'EquipoController', 'getEquipos');
-$router->addRoute('equipos/:ID', 'GET', 'EquipoController', 'getEquipo');
-$router->addRoute('equipos/:NOMBRE', 'GET', 'EquipoController', 'getEquipo');
+$router->addRoute('equipos/:PARAMETRO', 'GET', 'EquipoController', 'getEquipo');
+//$router->addRoute('equipos/:NOMBRE', 'GET', 'EquipoController', 'getEquipoxNombre');
 $router->addRoute('equipos', 'POST', 'EquipoController', 'agregarEquipo');
 $router->addRoute('equipos', 'PUT', 'EquipoController', 'actualizarEquipos');
 $router->addRoute('equipos', 'DELETE', 'EquipoController', 'borrarEquipos');
-
+/*
 var_dump($_GET["resource"]);
-die();
+die();*/
 
 // ejecuta la ruta (sea cual sea)
 $router->route($_GET["resource"], $_SERVER['REQUEST_METHOD']);
