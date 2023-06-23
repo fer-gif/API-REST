@@ -9,8 +9,8 @@ class EquipoModel
     {
         try {
             $this->connection = new Conexion();
-        } catch (PDOException $e) {
-            throw new Exception($e);
+        } catch (Exception $e) {
+            throw $e;
         }
     }
 
