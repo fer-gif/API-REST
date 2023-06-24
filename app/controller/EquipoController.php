@@ -26,9 +26,6 @@ class EquipoController
     public function getEquipos()
     {
         $res = $this->model->getEquipos();
-        var_dump($res);
-
-        die("GET EQUIPOSSSSS");
     }
     public function getEquipo($params)
     {
