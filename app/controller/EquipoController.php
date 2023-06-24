@@ -29,18 +29,22 @@ class EquipoController
 
     public function getEquipos()
     {
-
         $res = $this->model->getEquipos();
         if ($res)
             $this->view->response($res, 200);
         else
-            $this->view->response($res, 204);
+            $this->view->response("No existen equipos", 204);
     }
     public function getEquipo($params)
     {
         $parametro = $params[':PARAMETRO'];
         if (is_numeric($parametro)) {
-            $res = $this->model->getEquipo($parametro);
+            if ($parametro > 0)
+                $res = $this->model->getEquipo($parametro);
+            else {
+                $this->view->response("El ID indicado debe ser mayor que 0", 400);
+                die();
+            }
         } elseif (is_string($parametro))
             $res = $this->model->getEquipo(null, $parametro);
 
@@ -49,19 +53,21 @@ class EquipoController
             unset($res->escudo);
             $this->view->response($res, 200);
         } else
-            $this->view->response($res, 204);
+            $this->view->response("No existe un equipo con los parametros enviados", 204);
     }
 
     public function agregarEquipo()
     {
-        print("LLEGA ");
-        die();
         $datos = $this->getData();
-        $nombre = $datos->nombre;
+        if (empty(trim($datos->nombre))) {
+            $this->view->response("Debe indicar el nombre del equipo que quiere agregar", 400);
+            die();
+        }
+        $nombre = trim($datos->nombre);
         $equipo = $this->model->getEquipo(null, $nombre);
         if ($equipo) {
             $this->view->response("El equipo con el nombre " . $nombre . " ya existe", 409);
-            exit();
+            die();
         }
         $res = $this->model->addEquipo($nombre);
         if ($res)
