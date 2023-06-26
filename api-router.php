@@ -1,9 +1,7 @@
 <?php
 require_once './libs/Router.php';
 require_once './app/controller/EquipoController.php';
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
-header("Access-Control-Allow-Headers: Origin, Content-Type, X-Requested-With");
+
 // crea el router
 $router = new Router();
 
@@ -29,4 +27,6 @@ die();*/
 $parts = [];
 parse_str($_SERVER['QUERY_STRING'], $parts);
 */
+var_dump($_GET['resource']);
+die;
 $router->route($_GET["resource"], $_SERVER['REQUEST_METHOD']);

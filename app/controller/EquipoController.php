@@ -29,19 +29,16 @@ class EquipoController
 
     public function getEquipos()
     {
-<<<<<<< HEAD
-        $res = $this->model->getEquipos();
-=======
-
         $res = $this->model->getEquipos();
         if ($res)
             $this->view->response($res, 200);
         else
             $this->view->response($res, 204);
->>>>>>> main
     }
     public function getEquipo($params)
     {
+        var_dump($params);
+        die();
         $parametro = $params[':PARAMETRO'];
         if (is_numeric($parametro)) {
             $res = $this->model->getEquipo($parametro);
