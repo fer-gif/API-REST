@@ -27,6 +27,7 @@ die();*/
 $parts = [];
 parse_str($_SERVER['QUERY_STRING'], $parts);
 */
+/*
 echo Utils::normalizarURL($_GET["resource"]);
-die();
+die();*/
 $router->route($_GET["resource"], $_SERVER['REQUEST_METHOD']);

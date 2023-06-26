@@ -14,12 +14,16 @@ class EquipoModel
         }
     }
 
-    public function getEquipos()
+    public function getEquipos($cond = null)
     {
         $conexion = $this->connection->getConnection();
 
-        $sentence = $conexion->prepare("SELECT * FROM equipos");
+        $sentence = $conexion->prepare('SELECT * FROM equipos :cond');
+        $sentence->bindParam(":cond", $cond);
+
         $sentence->execute();
+        var_dump($sentence);
+        die;
         $sentence->setFetchMode(PDO::FETCH_OBJ);
         $equipos = $sentence->fetchAll();
         $conexion = null;

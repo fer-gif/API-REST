@@ -26,10 +26,12 @@ class EquipoController
     {
         return json_decode($this->data);
     }
-
+    /*
+ORDER BY nombre DESC
+*/
     public function getEquipos()
     {
-        $res = $this->model->getEquipos();
+        $res = $this->model->getEquipos("ORDER BY `nombre` DESC");
         if ($res)
             $this->view->response($res, 200);
         else
@@ -37,8 +39,6 @@ class EquipoController
     }
     public function getEquipo($params)
     {
-        var_dump($params);
-        die();
         $parametro = $params[':PARAMETRO'];
         if (is_numeric($parametro)) {
             if ($parametro > 0)
