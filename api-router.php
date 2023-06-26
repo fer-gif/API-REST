@@ -1,7 +1,7 @@
 <?php
 require_once './libs/Router.php';
 require_once './app/controller/EquipoController.php';
-
+require_once './libs/Utils.php';
 // crea el router
 $router = new Router();
 
@@ -27,6 +27,6 @@ die();*/
 $parts = [];
 parse_str($_SERVER['QUERY_STRING'], $parts);
 */
-var_dump($_GET['resource']);
-die;
+echo Utils::normalizarURL($_GET["resource"]);
+die();
 $router->route($_GET["resource"], $_SERVER['REQUEST_METHOD']);
