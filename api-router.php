@@ -13,12 +13,7 @@ $router->addRoute('tasks/:ID', 'GET', 'TaskApiController', 'getTask');
 $router->addRoute('tasks/:ID', 'DELETE', 'TaskApiController', 'deleteTask');
 $router->addRoute('tasks', 'POST', 'TaskApiController', 'insertTask'); */
 
-/*api/equipos		      
-api/equipos/:id		  
-api/equipos/:nombre
-api/equipos		      
-api/equipos/:id		  
-api/equipos/:id		   */
+
 $router->addRoute('equipos', 'GET', 'EquipoController', 'getEquipos');
 $router->addRoute('equipos/:PARAMETRO', 'GET', 'EquipoController', 'getEquipo');
 //$router->addRoute('equipos/:NOMBRE', 'GET', 'EquipoController', 'getEquipoxNombre');
@@ -30,4 +25,8 @@ var_dump($_GET["resource"]);
 die();*/
 
 // ejecuta la ruta (sea cual sea)
+/*
+$parts = [];
+parse_str($_SERVER['QUERY_STRING'], $parts);
+*/
 $router->route($_GET["resource"], $_SERVER['REQUEST_METHOD']);
