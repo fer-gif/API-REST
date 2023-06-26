@@ -2,6 +2,7 @@
 Documentacion API REST
 
 EQUIPOS:
+
 api/equipos------ a traves del verbo GET traemos todos los equipos que se encuentran en la base de datos.
 
 api/equipos/:"PARAMETRO"(ID o NOMBRE)-------- con el verbo GET y en "PARAMETRO", colocar el ID o el nombre de un equipo, nos mostrara los datos de ese equipo en particular.
