@@ -35,4 +35,5 @@ die();*/
 /*
 echo Utils::normalizarURL($_GET["resource"]);
 die();*/
+
 $router->route($_GET["resource"], $_SERVER['REQUEST_METHOD']);

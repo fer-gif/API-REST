@@ -2,6 +2,7 @@
 require_once 'app/model/EquipoModel.php';
 require_once 'app/view/api.view.php';
 require_once 'app/model/JugadorModel.php';
+require_once './libs/ParamsHelper.php';
 
 class EquipoController
 {
@@ -33,16 +34,13 @@ ORDER BY nombre DESC
 */
     public function getEquipos()
     {
-        $parts = [];
-        parse_str($_SERVER['QUERY_STRING'], $parts);
-        //$parts = explode("&", $_SERVER['QUERY_STRING']);
-        var_dump(array_key_exists("ORDERBY", $parts));
-        die;
-        $res = $this->model->getEquipos();
+        $filtro = new ParamsHelper();
+        //$filtro = $this->armarFiltro();
+        $res = $this->model->getEquipos($filtro);
         if ($res)
             $this->view->response($res, 200);
         else
-            $this->view->response("No existen equipos", 204);
+            $this->view->response("No existen equipos", 404);
     }
     public function getEquipo($params)
     {
@@ -139,4 +137,26 @@ ORDER BY nombre DESC
             die();
         }
     }
+    /*
+    public function armarFiltro()
+    {
+        $query = '';
+
+        if (isset($_GET["orderBy"])) {
+            $query .= "ORDER BY " . $_GET["orderBy"];
+            if (isset($_GET["order"]))
+                $query .= " " . $_GET["order"];
+        }
+
+        if (isset($_GET["cantidad"])) {
+            $cant = $_GET["cantidad"];
+            if (isset($_GET["pagina"])) {
+                $pag = $_GET["pagina"];
+                $query .= " LIMIT " . ($cant * $pag) - $cant + 1 . "," . $cant;
+            } else {
+                $query .= " LIMIT 1," . $cant;
+            }
+        }
+        return $query;
+    }*/
 }
