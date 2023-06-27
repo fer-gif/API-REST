@@ -1,6 +1,7 @@
 <?php
 require_once './libs/Router.php';
 require_once './app/controller/EquipoController.php';
+require_once './app/controller/JugadorController.php';
 require_once './libs/Utils.php';
 // crea el router
 $router = new Router();
@@ -14,19 +15,23 @@ $router->addRoute('tasks', 'POST', 'TaskApiController', 'insertTask'); */
 
 $router->addRoute('equipos', 'GET', 'EquipoController', 'getEquipos');
 $router->addRoute('equipos/:PARAMETRO', 'GET', 'EquipoController', 'getEquipo');
-//$router->addRoute('equipos/:NOMBRE', 'GET', 'EquipoController', 'getEquipoxNombre');
 $router->addRoute('equipos', 'POST', 'EquipoController', 'agregarEquipo');
-$router->addRoute('equipos', 'PUT', 'EquipoController', 'actualizarEquipos');
-$router->addRoute('equipos', 'DELETE', 'EquipoController', 'borrarEquipos');
+$router->addRoute('equipos/:ID', 'PUT', 'EquipoController', 'actualizarEquipo');
+$router->addRoute('equipos/:ID', 'DELETE', 'EquipoController', 'borrarEquipo');
+$router->addRoute('equipos/:NOMBRE/jugadores', 'GET', 'EquipoController', 'getJugadoresxEquipo');
+
+$router->addRoute('jugadores', 'GET', 'JugadorController', 'getJugadores');
+$router->addRoute('jugadores/:ID', 'GET', 'JugadorController', 'getJugador');
+$router->addRoute('jugadores', 'POST', 'JugadorController', 'registrarJugador');
+
+
 /*
 var_dump($_GET["resource"]);
 die();*/
 
 // ejecuta la ruta (sea cual sea)
-/*
-$parts = [];
-parse_str($_SERVER['QUERY_STRING'], $parts);
-*/
+
+
 /*
 echo Utils::normalizarURL($_GET["resource"]);
 die();*/

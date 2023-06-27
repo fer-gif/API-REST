@@ -15,15 +15,15 @@ class JugadorModel
     }
 
 
-    public function getJugadores($idEquipo = null)
+    public function getJugadores($nombre = null)
     {
         $conexion = $this->connection->getConnection();
-        if (isset($idEquipo)) {
+        if (isset($nombre)) {
             $sentence = $conexion->prepare("SELECT j.*,e.nombre AS nombre_equipo FROM jugadores j 
                                         INNER JOIN equipos e
                                         ON j.id_equipo=e.id_equipo
-                                        WHERE e.id_equipo=:idEquipo");
-            $sentence->bindParam(":idEquipo", $idEquipo);
+                                        WHERE e.nombre=:nombre");
+            $sentence->bindParam(":nombre", $nombre);
         } else
             $sentence = $conexion->prepare("SELECT * FROM jugadores");
 
@@ -55,7 +55,7 @@ class JugadorModel
         return $jugador;
     }
 
-    public function addJugador($nombre, $apellido, $dni, $posicion, $telefono, $foto, $id_equipo,)
+    public function addJugador($nombre, $apellido, $dni, $posicion, $telefono, $foto, $id_equipo)
     {
         $conexion = $this->connection->getConnection();
         $sentence = $conexion->prepare("INSERT INTO jugadores (nombre,apellido,dni,telefono,posicion,foto,id_equipo) 
