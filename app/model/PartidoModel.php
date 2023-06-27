@@ -41,12 +41,14 @@ class PartidoModel
         return $partido;
     }
 
-    public function getPartidosXEquipo($idEquipo)
+    public function getPartidosXEquipo($nombre)
     {
         $conexion = $this->connection->getConnection();
-        $sentence = $conexion->prepare("SELECT * FROM partidos 
-                                        WHERE id_equipo1 = :idEquipo OR id_equipo2 = :idEquipo");
-        $sentence->bindParam(":idEquipo", $idEquipo);
+        $sentence = $conexion->prepare("SELECT * FROM partidos p
+                                        INNER JOIN equipos e
+                                        ON p.id_equipo1 = e.id_equipo OR p.id_equipo2 = e.id_equipo
+                                        WHERE e.nombre=:nombre ");
+        $sentence->bindParam(":nombre", $nombre);
         $sentence->execute();
         $result = $sentence->fetchAll(PDO::FETCH_ASSOC);
         return $result;
