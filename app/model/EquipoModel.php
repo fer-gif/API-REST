@@ -1,6 +1,7 @@
 
 <?php
 require_once 'Conexion.php';
+require_once './libs/ParamsHelper.php';
 class EquipoModel
 {
     private $connection;
@@ -14,13 +15,11 @@ class EquipoModel
         }
     }
 
-    public function getEquipos($cond = null)
+    public function getEquipos($filtro)
     {
         $conexion = $this->connection->getConnection();
-
-        $sentence = $conexion->prepare('SELECT * FROM equipos');
-        /*  if (!empty($cond))
-            $sentence->bindParam(":cond", $cond);*/
+        $query = "SELECT * FROM equipos " . $filtro->armarFiltro();
+        $sentence = $conexion->prepare($query);
         $sentence->execute();
 
         $sentence->setFetchMode(PDO::FETCH_OBJ);
