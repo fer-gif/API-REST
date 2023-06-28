@@ -3,6 +3,7 @@ require_once './libs/Router.php';
 require_once './app/controller/EquipoController.php';
 require_once './app/controller/JugadorController.php';
 require_once './app/controller/PartidoController.php';
+require_once './app/controller/UserController.php';
 require_once './libs/Utils.php';
 // crea el router
 $router = new Router();
@@ -29,6 +30,9 @@ $router->addRoute('partidos', 'GET', 'PartidoController', 'getPartidos');
 $router->addRoute('partidos/:EQUIPO', 'GET', 'PartidoController', 'getPartidosxEquipo');
 $router->addRoute('partidos', 'POST', 'PartidoController', 'agregarPartido');
 $router->addRoute('partidos/:ID', 'DELETE', 'PartidoController', 'borrarPartido');
+
+$router->addRoute('login', 'GET', 'UserController', 'login');
+
 /*
 var_dump($_GET["resource"]);
 die();*/

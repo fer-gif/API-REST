@@ -1,6 +1,6 @@
 <?php
 require_once 'Conexion.php';
-
+require_once './libs/ParamsHelper.php';
 class JugadorModel
 {
     private $connection;
@@ -15,7 +15,7 @@ class JugadorModel
     }
 
 
-    public function getJugadores($nombre = null)
+    public function getJugadores($nombre = null, $filtro = null)
     {
         $conexion = $this->connection->getConnection();
         if (isset($nombre)) {
@@ -25,7 +25,7 @@ class JugadorModel
                                         WHERE e.nombre=:nombre");
             $sentence->bindParam(":nombre", $nombre);
         } else
-            $sentence = $conexion->prepare("SELECT * FROM jugadores");
+            $sentence = $conexion->prepare("SELECT * FROM jugadores WHERE 1=1 " . $filtro->armarFiltro());
 
         $sentence->execute();
         $sentence->setFetchMode(PDO::FETCH_ASSOC);

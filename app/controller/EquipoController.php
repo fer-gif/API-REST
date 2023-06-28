@@ -3,6 +3,7 @@ require_once 'app/model/EquipoModel.php';
 require_once 'app/view/api.view.php';
 require_once 'app/model/JugadorModel.php';
 require_once './libs/ParamsHelper.php';
+require_once './libs/AuthHelper.php';
 
 class EquipoController
 {
@@ -65,6 +66,8 @@ ORDER BY nombre DESC
 
     public function agregarEquipo()
     {
+        $this->esAdministrador();
+
         $datos = $this->getData();
         $this->comprobarParametro($datos);
         $nombre = trim($datos->nombre);
@@ -78,6 +81,8 @@ ORDER BY nombre DESC
 
     public function actualizarEquipo($params)
     {
+        $this->esAdministrador();
+
         $id = $params[':ID'];
         $datos = $this->getData();
         $this->comprobarParametro($datos);
@@ -93,6 +98,8 @@ ORDER BY nombre DESC
 
     public function borrarEquipo($params)
     {
+        $this->esAdministrador();
+
         $id = $params[':ID'];
         $equipo = $this->model->getEquipo($id);
         if ($equipo) {
@@ -137,26 +144,12 @@ ORDER BY nombre DESC
             die();
         }
     }
-    /*
-    public function armarFiltro()
+    private function esAdministrador()
     {
-        $query = '';
-
-        if (isset($_GET["orderBy"])) {
-            $query .= "ORDER BY " . $_GET["orderBy"];
-            if (isset($_GET["order"]))
-                $query .= " " . $_GET["order"];
+        $aut = new AuthHelper();
+        if (!$aut->validarPermisos() || !$aut->tienePermisos(5)) {
+            $this->view->response("No posee permisos para realizar esta accion.", 401);
+            die();
         }
-
-        if (isset($_GET["cantidad"])) {
-            $cant = $_GET["cantidad"];
-            if (isset($_GET["pagina"])) {
-                $pag = $_GET["pagina"];
-                $query .= " LIMIT " . ($cant * $pag) - $cant + 1 . "," . $cant;
-            } else {
-                $query .= " LIMIT 1," . $cant;
-            }
-        }
-        return $query;
-    }*/
+    }
 }

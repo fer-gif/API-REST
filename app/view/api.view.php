@@ -19,6 +19,7 @@ class ApiView
       201 => "Created",
       204 => "Sin contenido",
       400 => "Bad request",
+      401 => "Unauthorized",
       404 => "Not found",
       409 => "Conflict",
       500 => "Internal Server Error"
