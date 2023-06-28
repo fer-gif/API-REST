@@ -1,6 +1,8 @@
 # API-REST
 Documentacion API REST
 
+<font color="red">This text is red!</font>
+
 EQUIPOS:
 
 api/equipos------ a traves del verbo GET traemos todos los equipos que se encuentran en la base de datos.
