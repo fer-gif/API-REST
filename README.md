@@ -11,6 +11,8 @@ api/equipos/:"PARAMETRO"(ID o NOMBRE)-------- con el verbo GET y en "PARAMETRO",
 
 api/equipos/:"NOMBRE"/jugadores-----------------utilizando nuevamente el verbo GET y ademas colocando en "NOMBRE" el nombre del equipo, accedemos a los jugadores que tiene ese equipo. 
 
+api/equipos/:"NOMBRE"/partidos----------------- escribiendo el nombre del equipo que se requiere en "NOMBRE" nos traera los partidos que jugaron ese equipo, utilizando el verbo GET. 
+
 api/equipos------ ya aca utilizando el verbo POST, a traves del body escribir 
 '{"nombre":"NombreEquipo"}' y sin utilizar parametros en la URL debe agregar un nuevo equipo a la base de datos.
 
