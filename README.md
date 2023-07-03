@@ -1,5 +1,9 @@
 # API Proyecto Futbol5
 
+**Table of Contents**
+
+[TOCM]
+
 ### EQUIPOS:
 >* Nota: El Body En  Postman se deberia de escribir de la siguiente manera:
 Usar unicamente cuando se requiera MODIFICAR (PUT) o AGREGAR(POST) un equipo.<br>
@@ -98,3 +102,8 @@ A traves del verbo **PUT** y pasando por parametro su **ID**, debemos escribir e
 
 - ##### api/partidos/:ID :
 Utilizando el verbo **DELETE** y enviando por parametro el **ID**, elimina un partido con ese id.
+
+
+### QUERY PARAMS:
+
+### TOKEN:
