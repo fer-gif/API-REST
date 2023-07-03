@@ -1,5 +1,6 @@
 <?php
 require_once 'app/model/EquipoModel.php';
+require_once 'app/model/PartidoModel.php';
 require_once 'app/view/api.view.php';
 require_once 'app/model/JugadorModel.php';
 require_once './libs/ParamsHelper.php';
@@ -11,6 +12,7 @@ class EquipoController
     private $model;
     private $view;
     private $jugadorModel;
+    private $partidoModel;
     private $data;
 
     public function __construct()
@@ -20,6 +22,7 @@ class EquipoController
         try {
             $this->jugadorModel = new JugadorModel();
             $this->model = new EquipoModel();
+            $this->partidoModel = new PartidoModel();
         } catch (Exception $e) {
             $this->view->response("Hubo un error en el servidor al intentar conectar con la base de datos", 500);
             die();
@@ -43,6 +46,7 @@ ORDER BY nombre DESC
         else
             $this->view->response("No existen equipos", 404);
     }
+
     public function getEquipo($params)
     {
         $parametro = $params[':PARAMETRO'];
@@ -72,7 +76,12 @@ ORDER BY nombre DESC
         $this->comprobarParametro($datos);
         $nombre = trim($datos->nombre);
         $this->nombreDisponible($nombre);
-        $res = $this->model->addEquipo($nombre);
+        $ciudad = trim($datos->ciudad);
+        if (isset($datos->socios))
+            $socios = trim($datos->socios);
+        else
+            $socios = 0;
+        $res = $this->model->addEquipo($nombre, $ciudad, $socios);
         if ($res)
             $this->view->response("Equipo creado correctamente. ID=" . $res, 201);
         else
@@ -87,9 +96,13 @@ ORDER BY nombre DESC
         $datos = $this->getData();
         $this->comprobarParametro($datos);
         $nombre = trim($datos->nombre);
-        $this->nombreDisponible($nombre);
-
-        $result = $this->model->updateEquipo($id, $datos->nombre);
+        $this->nombreDisponible($nombre, $id);
+        $ciudad = trim($datos->ciudad);
+        if (isset($datos->socios) && is_numeric($datos->socios))
+            $socios = $datos->socios;
+        else
+            $socios = 0;
+        $result = $this->model->updateEquipo($id, $nombre, $ciudad, $socios);
         if ($result)
             $this->view->response("Equipo editado correctamente", 200);
         else
@@ -122,25 +135,43 @@ ORDER BY nombre DESC
             if ($jugadores) {
                 $this->view->response($jugadores, 200);
             } else {
-                //PREGUNTAR POR EL NUMERO DE ERROR
                 $this->view->response("No existen jugadores registrado en el equipo", 404);
             }
         } else {
             $this->view->response("El equipo no existe en la base de datos", 404);
         }
     }
-    private function nombreDisponible($nombre)
+
+    public function getPartidosxEquipo($parametro)
+    {
+        $equipo = $parametro[":EQUIPO"];
+        $res = $this->model->getEquipo(null, $equipo);
+
+        if ($res) {
+            $partidos = $this->partidoModel->getPartidosxEquipo($equipo);
+            if ($partidos) {
+                $this->view->response($partidos, 200);
+            } else {
+                $this->view->response("No existe partidos para este equipo", 204);
+            }
+        } else {
+            $this->view->response("No existe un equipo con ese id", 404);
+        }
+    }
+
+    private function nombreDisponible($nombre, $id = null)
     {
         $equipo = $this->model->getEquipo(null, $nombre);
-        if ($equipo) {
-            $this->view->response("El equipo con el nombre " . $nombre . " ya existe", 409);
-            die();
-        }
+        if ($equipo)
+            if (!isset($id) || $equipo->id_equipo != $id) {
+                $this->view->response("El equipo con el nombre " . $nombre . " ya existe", 409);
+                die();
+            }
     }
     private function comprobarParametro($datos)
     {
-        if (!isset($datos->nombre) || empty(trim($datos->nombre))) {
-            $this->view->response("Debe indicar el nombre del equipo que quiere editar", 400);
+        if (!isset($datos->nombre) || empty(trim($datos->nombre)) || !isset($datos->ciudad) || empty(trim($datos->ciudad))) {
+            $this->view->response("Debe indicar el nombre y la ciudad del equipo", 400);
             die();
         }
     }

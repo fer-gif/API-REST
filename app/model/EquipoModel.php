@@ -51,11 +51,11 @@ class EquipoModel
     }
 
 
-    public function addEquipo($nombre)
+    public function addEquipo($nombre, $ciudad, $socios)
     {
         $conexion = $this->connection->getConnection();
-        $sentence = $conexion->prepare("INSERT INTO equipos(nombre) VALUES(?)");
-        $sentence->execute(array($nombre));
+        $sentence = $conexion->prepare("INSERT INTO equipos(nombre,ciudad,socios) VALUES(?,?,?)");
+        $sentence->execute(array($nombre, $ciudad, $socios));
         $lastId = $conexion->lastInsertId();
         $conexion = null;
         return $lastId;
@@ -71,13 +71,15 @@ class EquipoModel
         return $response;
     }
 
-    public function updateEquipo($idEquipo, $nombre)
+    public function updateEquipo($idEquipo, $nombre, $ciudad, $socios)
     {
         $conexion = $this->connection->getConnection();
         $sentence = $conexion->prepare("UPDATE equipos
-                                    SET nombre = :nombre
+                                    SET nombre = :nombre, ciudad = :ciudad, socios = :socios
                                     WHERE id_equipo = :idEquipo");
         $sentence->bindParam(":nombre", $nombre);
+        $sentence->bindParam(":ciudad", $ciudad);
+        $sentence->bindParam(":socios", $socios);
         $sentence->bindParam(":idEquipo", $idEquipo);
         $response = $sentence->execute();
         $conexion = null;

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-06-2023 a las 01:51:41
--- Versión del servidor: 10.4.27-MariaDB
--- Versión de PHP: 8.2.0
+-- Tiempo de generación: 03-07-2023 a las 14:17:21
+-- Versión del servidor: 10.4.24-MariaDB
+-- Versión de PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,10 +18,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `db_appfutbol5`
+-- Base de datos: `db_appfutbol5-api`
 --
-CREATE DATABASE IF NOT EXISTS `db_appfutbol5` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `db_appfutbol5`;
+CREATE DATABASE IF NOT EXISTS `db_appfutbol5-api` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `db_appfutbol5-api`;
 
 -- --------------------------------------------------------
 
@@ -33,7 +33,7 @@ CREATE TABLE `equipos` (
   `id_equipo` int(11) NOT NULL,
   `nombre` varchar(50) NOT NULL,
   `escudo` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `equipos`
@@ -45,7 +45,13 @@ INSERT INTO `equipos` (`id_equipo`, `nombre`, `escudo`) VALUES
 (12, 'Boca', NULL),
 (13, 'Racing', 'racing.png'),
 (14, 'Estudiantes', NULL),
-(15, 'Isotopos', NULL);
+(15, 'Maipu', NULL),
+(16, 'Gimnasioa', NULL),
+(18, 'Independiente', NULL),
+(25, 'Belgrano', NULL),
+(26, 'Intituto', NULL),
+(28, 'Arsenal', NULL),
+(31, 'Milan', NULL);
 
 -- --------------------------------------------------------
 
@@ -62,7 +68,7 @@ CREATE TABLE `jugadores` (
   `posicion` varchar(5) NOT NULL,
   `foto` text DEFAULT NULL,
   `id_equipo` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `jugadores`
@@ -112,7 +118,7 @@ CREATE TABLE `partidos` (
   `goles_equipo1` int(11) NOT NULL,
   `goles_equipo2` int(11) NOT NULL,
   `fecha` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `partidos`
@@ -139,7 +145,7 @@ CREATE TABLE `usuarios` (
   `email` text DEFAULT NULL,
   `permisos` int(11) NOT NULL,
   `id_equipo` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `usuarios`
@@ -196,7 +202,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `equipos`
 --
 ALTER TABLE `equipos`
-  MODIFY `id_equipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_equipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT de la tabla `jugadores`

@@ -55,12 +55,12 @@ class JugadorModel
         return $jugador;
     }
 
-    public function addJugador($nombre, $apellido, $dni, $posicion, $telefono, $foto, $id_equipo)
+    public function addJugador($nombre, $apellido, $dni, $posicion, $telefono, $edad, $id_equipo)
     {
         $conexion = $this->connection->getConnection();
-        $sentence = $conexion->prepare("INSERT INTO jugadores (nombre,apellido,dni,telefono,posicion,foto,id_equipo) 
+        $sentence = $conexion->prepare("INSERT INTO jugadores (nombre,apellido,dni,telefono,posicion,edad,id_equipo) 
                                         VALUES(?,?,?,?,?,?,?)");
-        $sentence->execute(array($nombre, $apellido, $dni, $telefono, $posicion, $foto, $id_equipo,));
+        $sentence->execute(array($nombre, $apellido, $dni, $telefono, $posicion, $edad, $id_equipo,));
         $lastId = $conexion->lastInsertId();
         $conexion = null;
         return $lastId;
@@ -76,13 +76,13 @@ class JugadorModel
         return $response;
     }
 
-    public function updateJugador($idJugador, $nombre, $apellido, $dni, $telefono, $posicion)
+    public function updateJugador($idJugador, $nombre, $apellido, $dni, $telefono, $posicion, $edad)
     {
         $conexion = $this->connection->getConnection();
         $sentence = $conexion->prepare("UPDATE jugadores
-                                    SET nombre = ? , apellido=? , dni=? , telefono=? , posicion=?
+                                    SET nombre = ? , apellido=? , dni=? , telefono=? , posicion=?, edad=?
                                     WHERE id_jugador = ?");
-        $response = $sentence->execute(array($nombre, $apellido, $dni, $telefono, $posicion, $idJugador));
+        $response = $sentence->execute(array($nombre, $apellido, $dni, $telefono, $posicion, $edad, $idJugador));
         $conexion = null;
 
         return $response;
