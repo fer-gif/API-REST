@@ -17,6 +17,7 @@ class JugadorModel
 
     public function getJugadores($nombre = null, $filtro = null)
     {
+
         $conexion = $this->connection->getConnection();
         if (isset($nombre)) {
             $sentence = $conexion->prepare("SELECT j.*,e.nombre AS nombre_equipo FROM jugadores j 
@@ -25,7 +26,11 @@ class JugadorModel
                                         WHERE e.nombre=:nombre");
             $sentence->bindParam(":nombre", $nombre);
         } else
-            $sentence = $conexion->prepare("SELECT * FROM jugadores WHERE 1=1 " . $filtro->armarFiltro());
+            $sentence = $conexion->prepare("SELECT * FROM jugadores" . $filtro->armarFiltro());
+
+        $valor = $filtro->getValor();
+        if ($valor)
+            $sentence->bindParam(":valor", $valor);
 
         $sentence->execute();
         $sentence->setFetchMode(PDO::FETCH_ASSOC);

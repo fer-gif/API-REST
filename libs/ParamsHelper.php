@@ -2,10 +2,10 @@
 
 class ParamsHelper
 {
-
     private $parameters = [
-        "orderBy" => "orderFilter",
-        "cantidad" => "catidadFilter"
+        "filter" => "aplicarFiltro",    //value
+        "orderBy" => "orderFilter",     //order
+        "cantidad" => "catidadFilter"   //Pagina
     ];
 
     private $parts = [];
@@ -21,7 +21,7 @@ class ParamsHelper
         $query = '';
         foreach ($this->parameters as $key => $valor) {
             if (array_key_exists($key, $this->parts)) {
-                $query .= $this->$valor($this->parts[$key]);
+                $query .= $this->$valor($this->parts[$key]); //$this->orderFilter($this->parts["orderBy"])
             }
         }
         return $query;
@@ -55,15 +55,40 @@ class ParamsHelper
                 $pag = $this->parts["pagina"];
                 $cadena .= " LIMIT " . ($valor * $pag) - $valor . "," . $valor;
             } else {
-                $cadena .= " LIMIT 1," . $valor;
+                $cadena .= " LIMIT 0," . $valor;
             }
         }
         return $cadena;
     }
 
+    private function aplicarFiltro($valor)
+    {
+        if ($this->parts['resource'] == 'equipos')
+            if (!$this->validarCamposEquipo($valor))
+                return '';
+
+        if ($this->parts['resource'] == 'jugadores')
+            if (!$this->validarCamposJugador($valor))
+                return '';
+
+        $cadena = '';
+        if (isset($this->parts['value'])) {
+            $cadena .= ' WHERE ' . $valor . "=:valor";
+        }
+        return $cadena;
+    }
+
+    public function getValor()
+    {
+        if (isset($this->parts['filter']) && isset($this->parts['value']) && !empty($this->parts['value']))
+            return $this->parts['value'];
+        else
+            return null;
+    }
+
     private function validarCamposEquipo($valor)
     {
-        if ($valor == 'id_equipo' || $valor == 'nombre')
+        if ($valor == 'id_equipo' || $valor == 'nombre' || $valor == 'ciudad' || $valor == 'socios')
             return true;
         else
             return false;
@@ -71,8 +96,8 @@ class ParamsHelper
     public function validarCamposJugador($valor)
     {
         if (
-            $valor == 'id_jugador' || $valor == 'nombre' || $valor == 'apellido' || $valor == 'dni'
-            || $valor == 'posicion'
+            $valor == 'nombre' || $valor == 'apellido' || $valor == 'dni'
+            || $valor == 'posicion' || $valor == 'edad' || $valor == 'telefono'
         )
             return true;
         else

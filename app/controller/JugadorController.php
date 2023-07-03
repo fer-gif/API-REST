@@ -37,7 +37,7 @@ class JugadorController
         if ($res)
             $this->view->response($res, 200);
         else
-            $this->view->response("No existen jugadores en la base de datos", 404);
+            $this->view->response("No existen jugadores en la base de datos para los valores indicados", 404);
     }
 
     public function getJugador($params)
@@ -59,19 +59,48 @@ class JugadorController
         }
         $datos = $this->getData();
         $this->comprobarDatos($datos);
-        $dni = $datos->dni;
-        $edad = $datos->edad;
-        if (!is_numeric($dni) || !is_numeric($edad)) {
-            $this->view->response("Los campos DNI y edad debes ser un numero entero.", 400);
+        $this->comprobarDisponibilidadDni($datos->dni);
+        $equipo = $this->equipoModel->getEquipo($datos->id_equipo);
+        if (!$equipo) {
+            $this->view->response("El ID del equipo ingresado para este jugador es incorrecto.", 401);
             die();
         }
-        $this->comprobarDisponibilidadDni($dni);
-        $posicion = $datos->posicion;
-        $this->comprobarPosicion($posicion);
+        $res = $this->jugadorModel->addJugador($datos->nombre, $datos->apellido, $datos->dni, $datos->posicion, $datos->telefono, $datos->edad, $datos->id_equipo);
+        if ($res)
+            $this->view->response("Jugador creado correctamente. ID=" . $res, 201);
+        else
+            $this->view->response("Hubo un error al intentar agregar el jugador", 500);
+    }
 
-        $this->jugadorModel->addJugador($datos->nombre, $datos->apellido, $dni, $posicion, $datos->telefono, $edad, $id_equipo);
-        var_dump($datos);
-        die;
+    public function actualizarJugador($params)
+    {
+        $this->esAdministrador();
+        $id = $params[':ID'];
+        $datos = $this->getData();
+        $this->comprobarDatos($datos);
+        $this->comprobarDisponibilidadDni($datos->dni, $id);
+
+        $res = $this->jugadorModel->updateJugador($id, $datos->nombre, $datos->apellido, $datos->dni, $datos->telefono, $datos->posicion, $datos->edad);
+        if ($res)
+            $this->view->response("Jugador editado correctamente. ID= " . $id, 201);
+        else
+            $this->view->response("Hubo un error al intentar editar el jugador.", 500);
+    }
+
+    public function eliminarJugador($params)
+    {
+        $this->esAdministrador();
+        $id = $params[':ID'];
+        $jugador = $this->jugadorModel->getJugador($id);
+        if ($jugador) {
+            $res = $this->jugadorModel->deleteJugador($id);
+            if ($res) {
+                $this->view->response("Jugador eliminado correctamente. ID= " . $id, 200);
+            } else {
+                $this->view->response("Hubo un error al intentar eliminar el jugador.", 500);
+            }
+        } else
+            $this->view->response("Error al eliminar. No existe un jugador con el ID indicado.", 404);
     }
 
     private function comprobarDatos($datos)
@@ -80,22 +109,24 @@ class JugadorController
             $this->view->response("Debe indicar los datos obligatorios", 400);
             die();
         }
-    }
-
-    private function comprobarDisponibilidadDni($dni)
-    {
-        $jugador = $this->jugadorModel->getJugador(null, $dni);
-        if ($jugador) {
-            $this->view->response("Ya existe un jugador con el DNI indicado", 400);
+        if (!is_numeric($datos->dni) || !is_numeric($datos->edad) || $datos->dni < 0 || $datos->edad < 0) {
+            $this->view->response("Los campos DNI y edad debes ser un numero entero mayor a 0.", 400);
+            die();
+        }
+        if ($datos->posicion !== "POR" && $datos->posicion !== "DEF" && $datos->posicion !== "MED" && $datos->posicion !== "DEL") {
+            $this->view->response("La posicion ingresada no es valida.", 400);
             die();
         }
     }
 
-    private function comprobarPosicion($pos)
+    private function comprobarDisponibilidadDni($dni, $id = null)
     {
-        if ($pos !== "POR" && $pos !== "DEF" && $pos !== "MED" && $pos !== "DEL") {
-            $this->view->response("La posicion ingresada no es valida.", 400);
-            die();
+        $jugador = $this->jugadorModel->getJugador(null, $dni);
+        if ($jugador) {
+            if (!isset($id) || $jugador->id_jugador != $id) {
+                $this->view->response("Ya existe un jugador con el DNI indicado", 400);
+                die();
+            }
         }
     }
 
