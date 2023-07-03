@@ -1,21 +1,14 @@
 # API Proyecto Futbol5
 
-### EUIPOS:
+### EQUIPOS:
 >* Nota: El Body En  Postman se deberia de escribir de la siguiente manera:
-Usar unicamente cuando se requiera MODIFICAR (PUT) o AGREGAR(POST) un equipo.
-```html
-<!DOCTYPE html>
-<html>
-    <body>
-        <p>{ 
-            "Nombre":......(String),
-            "Ciudad":.......(String),
-            "Socios":......(Number) 
+Usar unicamente cuando se requiera MODIFICAR (PUT) o AGREGAR(POST) un equipo.<br>
+            { 
+                "Nombre":......(String),
+                "Ciudad":.......(String),
+                "Socios":......(Number) 
             }
-        </p>
-    </body>
-</html>
-```
+
 
 #### *¿Como escribir las urls?*
 
