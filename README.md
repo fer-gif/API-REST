@@ -1,8 +1,8 @@
 # API Proyecto Futbol5
 
-**Table of Contents**
 
-[TOCM]
+**CONTENIDOS**
+[TOC]
 
 ### EQUIPOS:
 >* Nota: El Body En  Postman se deberia de escribir de la siguiente manera:
@@ -30,7 +30,7 @@ Utilizando nuevamente el verbo **GET** y ademas colocando en "**NOMBRE**" EL nom
 
 - ##### api/equipos/:NOMBRE/partidos:
 Escribiendo el nombre del equipo que se requiere en "**NOMBRE**" nos traera los partidos que jugaron ese equipo, utilizando el verbo **GET**.
-
+ 
 - ##### api/equipos:
 Ya aca utilizando el verbo **POST**, a traves del body escribir los campos requeridos, sin utilizar parametros en la URL debe agregar un nuevo equipo a la base de datos.
 
