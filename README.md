@@ -3,7 +3,7 @@
 ### EUIPOS:
 >* Nota: El Body En  Postman se deberia de escribir de la siguiente manera:
 Usar unicamente cuando se requiera MODIFICAR (PUT) o AGREGAR(POST) un equipo.
-{ 
+>* { 
 "Nombre":......(String),
 "Ciudad":.......(String),
 "Socios":......(Number) 
@@ -71,13 +71,14 @@ Utilizando el verbo **DELETE** y enviando por parametro el **ID**, elimina un ju
 
 ### PARTIDOS: 
 > NOTA: el body en el Postman para partidos se escribe de la siguiente manera. Usar unicamente cuando se requiera MODIFICAR (PUT) o AGREGAR(POST) un partido:
-
 {
+
 "id_equipo1":....(number),
 "id_equipo2":.....(number),
 "goles_equipo1" :.....(number), 
 "goles_equipo2":.....(number),
 "fecha":......(number), 
+
 }
 
 #### *¿Como escribir las urls?*
