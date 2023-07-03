@@ -31,9 +31,6 @@ Utilizando nuevamente el verbo **GET** y ademas colocando en "**NOMBRE**" EL nom
 - ##### api/equipos/:NOMBRE/partidos:
 Escribiendo el nombre del equipo que se requiere en "**NOMBRE**" nos traera los partidos que jugaron ese equipo, utilizando el verbo **GET**.
 
-- ##### api/equipos/posiciones:
-A traves del verbo **GET**, traemos las posiciones del torneo del primero al ultimo.
-
 - ##### api/equipos:
 Ya aca utilizando el verbo **POST**, a traves del body escribir los campos requeridos, sin utilizar parametros en la URL debe agregar un nuevo equipo a la base de datos.
 
@@ -75,15 +72,13 @@ Utilizando el verbo **DELETE** y enviando por parametro el **ID**, elimina un ju
 
 
 ### PARTIDOS: 
-> NOTA: el body en el Postman para partidos se escribe de la siguiente manera. Usar unicamente cuando se requiera MODIFICAR (PUT) o AGREGAR(POST) un partido<br>
+> NOTA: el body en el Postman para partidos se escribe de la siguiente manera. Usar unicamente cuando se requiera MODIFICAR (PUT) o AGREGAR(POST) un partido.<br>
 {<br>
-
 "id_equipo1":....(number),<br>
 "id_equipo2":.....(number),<br>
 "goles_equipo1" :.....(number), <br>
 "goles_equipo2":.....(number),<br>
 "fecha":......(number)<br>
-
 }
 
 #### *¿Como escribir las urls?*
@@ -106,4 +101,13 @@ Utilizando el verbo **DELETE** y enviando por parametro el **ID**, elimina un pa
 
 ### QUERY PARAMS:
 
+
 ### TOKEN:
+Para poder acceder a las acciones de modificacion, agregar o eliminar cualquier registro de las tablas, el usuario debe tener un acceso al token que sera generado a traves de la api.
+Para generar dicho token, el usuario debe loguearse con su usuario y contraseña correspondiente. Y luego de comprobar de que los datos sean correctos la api retornara el token de acceso que deberia ser usado en cada peticion con el metodo POST, PUT O DELETE. Para login de usuario el endpoint disponible "api/login" con metodo POST en el body del login aparecera
+{
+    "usuario":"Admin",
+    "password":"admin1234"
+}
+
+Con dicho token generado, en el header de la peticion se debe incluir el atributo 
