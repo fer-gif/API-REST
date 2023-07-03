@@ -20,6 +20,9 @@ class EquipoModel
         $conexion = $this->connection->getConnection();
         $query = "SELECT * FROM equipos " . $filtro->armarFiltro();
         $sentence = $conexion->prepare($query);
+        $valor = $filtro->getValor();
+        if ($valor)
+            $sentence->bindParam(":valor", $valor);
         $sentence->execute();
 
         $sentence->setFetchMode(PDO::FETCH_OBJ);

@@ -101,7 +101,6 @@ class PartidoModel
                                     WHERE id_partido = ?");
         $response = $sentence->execute(array($golesEquipo1, $golesEquipo2, $fecha, $id_partido));
         $conexion = null;
-
         return $response;
     }
 }

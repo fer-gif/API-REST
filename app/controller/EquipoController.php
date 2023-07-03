@@ -33,18 +33,15 @@ class EquipoController
     {
         return json_decode($this->data);
     }
-    /*
-ORDER BY nombre DESC
-*/
+
     public function getEquipos()
     {
         $filtro = new ParamsHelper();
-        //$filtro = $this->armarFiltro();
         $res = $this->model->getEquipos($filtro);
         if ($res)
             $this->view->response($res, 200);
         else
-            $this->view->response("No existen equipos", 404);
+            $this->view->response("No existen equipos para los valores indicados.", 404);
     }
 
     public function getEquipo($params)
@@ -104,7 +101,7 @@ ORDER BY nombre DESC
             $socios = 0;
         $result = $this->model->updateEquipo($id, $nombre, $ciudad, $socios);
         if ($result)
-            $this->view->response("Equipo editado correctamente", 200);
+            $this->view->response("Equipo editado correctamente. ID= " . $id, 200);
         else
             $this->view->response("Hubo un error al intentar editar el equipo", 400);
     }
@@ -119,7 +116,7 @@ ORDER BY nombre DESC
             $result = $this->model->deleteEquipo($id);
             if ($result)
                 if ($result)
-                    $this->view->response("Equipo eliminado correctamente.", 200);
+                    $this->view->response("Equipo eliminado correctamente. ID=" . $id, 200);
                 else
                     $this->view->response("Hubo un error al intentar eliminar el equipo.", 400);
         } else
@@ -131,7 +128,8 @@ ORDER BY nombre DESC
         $equipo = $params[':NOMBRE'];
         $res = $this->model->getEquipo(null, $equipo);
         if ($res) {
-            $jugadores = $this->jugadorModel->getJugadores($equipo);
+            $filtro = new ParamsHelper();
+            $jugadores = $this->jugadorModel->getJugadores($equipo, $filtro);
             if ($jugadores) {
                 $this->view->response($jugadores, 200);
             } else {
@@ -159,6 +157,9 @@ ORDER BY nombre DESC
         }
     }
 
+    public function getPosiciones()
+    {
+    }
     private function nombreDisponible($nombre, $id = null)
     {
         $equipo = $this->model->getEquipo(null, $nombre);

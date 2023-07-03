@@ -37,10 +37,20 @@ class PartidoController
             $this->view->response($res, 204);
     }
 
+    public function getPartido($params)
+    {
+        $param = $params[":ID"];
+        $res = $this->model->getPartido($param);
+        if ($res) {
+            $this->view->response($res, 200);
+        } else
+            $this->view->response("No existe partido con ese ID.", 404);
+    }
+
     public function agregarPartido()
     {
+        $this->esAdministrador();
         $datos = $this->getData();
-
         $this->comprobarEquiposDistintos($datos);
         $this->comprobarEquipos($datos);
         $this->comprobarPartido($datos);
@@ -58,22 +68,47 @@ class PartidoController
             } else
                 $this->view->response("Hubo un error al intentar agregar el partido", 500);
         } else {
-            $this->view->response("Tienes que registrar todos los campos", 404);
+            $this->view->response("Tienes que registrar todos los campos", 400);
         }
     }
 
+    public function actualizarPartido($params)
+    {
+        $this->esAdministrador();
+        $id = $params[':ID'];
+        $datos = $this->getData();
+        $partido = $this->model->getPartido($id);
+        if (!$partido) {
+            $this->view->response("El partido que quiere editar no existe en la base de datos.", 404);
+            die();
+        }
+        if (isset($datos->goles_equipo1) && isset($datos->goles_equipo2) && isset($datos->fecha)) {
+            $goles1 = $datos->goles_equipo1;
+            $goles2 = $datos->goles_equipo2;
+            $fecha = $datos->fecha;
+            $res = $this->model->updatePartido($id, $goles1, $goles2, $fecha);
+
+            if ($res) {
+                $this->view->response("Partido editado correctamente. ID=" . $id, 201);
+            } else
+                $this->view->response("Hubo un error al intentar editar el partido", 500);
+        } else {
+            $this->view->response("Tienes que registrar todos los campos", 400);
+        }
+    }
 
     public function borrarPartido($params)
     {
+        $this->esAdministrador();
         $id = $params[':ID'];
         $partido = $this->model->getPartido($id);
         if ($partido) {
             $result = $this->model->deletePartido($id);
             if ($result)
                 if ($result)
-                    $this->view->response("Partido eliminado correctamente.", 200);
+                    $this->view->response("Partido eliminado correctamente. ID=" . $id, 200);
                 else
-                    $this->view->response("Hubo un error al intentar eliminar el partido.", 400);
+                    $this->view->response("Hubo un error al intentar eliminar el partido.", 500);
         } else
             $this->view->response("El partido que intenta eliminar no existe en la base de datos.", 404);
     }
@@ -104,6 +139,15 @@ class PartidoController
         $partido = $this->model->getCruceDePartido($datos->id_equipo1, $datos->id_equipo2);
         if ($partido) {
             $this->view->response("El partido que desea ingresar ya existe", 409);
+            die();
+        }
+    }
+
+    private function esAdministrador()
+    {
+        $aut = new AuthHelper();
+        if (!$aut->validarPermisos() || !$aut->tienePermisos(5)) {
+            $this->view->response("No posee permisos para realizar esta accion.", 401);
             die();
         }
     }
