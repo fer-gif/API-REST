@@ -15,7 +15,7 @@ class PartidoController
         $this->data = file_get_contents("php://input");
         $this->view = new ApiView();
         try {
-            $this->model= new PartidoModel();
+            $this->model = new PartidoModel();
             $this->modelEquipo = new EquipoModel();
         } catch (Exception $e) {
             $this->view->response("Hubo un error en el servidor al intentar conectar con la base de datos", 500);
@@ -37,48 +37,31 @@ class PartidoController
             $this->view->response($res, 204);
     }
 
-    public function getPartidosxEquipo($parametro)
+    public function agregarPartido()
     {
-        $equipo=$parametro[":EQUIPO"];
-        $res= $this->modelEquipo->getEquipo(null,$equipo);
+        $datos = $this->getData();
 
-        if($res){
-            $partidos=$this->model->getPartidosxEquipo($equipo);
-            if($partidos){
-                $this->view->response($partidos, 200);
-            }else{
-                $this->view->response("No existe partidos para este equipo", 204);
-            }
-        }else{
-            $this->view->response("No existe un equipo con ese id", 404);
+        $this->comprobarEquiposDistintos($datos);
+        $this->comprobarEquipos($datos);
+        $this->comprobarPartido($datos);
+
+        if (isset($datos->goles_equipo1) && isset($datos->goles_equipo2) && isset($datos->fecha)) {
+            $equipo1 = $datos->id_equipo1;
+            $equipo2 = $datos->id_equipo2;
+            $goles1 = $datos->goles_equipo1;
+            $goles2 = $datos->goles_equipo2;
+            $fecha = $datos->fecha;
+            $res = $this->model->addPartido($equipo1, $equipo2, $goles1, $goles2, $fecha);
+
+            if ($res) {
+                $this->view->response("Partido agregado correctamente. ID=" . $res, 201);
+            } else
+                $this->view->response("Hubo un error al intentar agregar el partido", 500);
+        } else {
+            $this->view->response("Tienes que registrar todos los campos", 404);
         }
     }
 
-    public function agregarPartido()
-    {
-            $datos=$this->getData();
-           
-            $this->comprobarEquiposDistintos($datos);
-            $this->comprobarEquipos($datos);
-            $this->comprobarPartido($datos);
-         
-            if(isset($datos->goles_equipo1) && isset($datos->goles_equipo2) && isset($datos->fecha)){
-                $equipo1=$datos->id_equipo1;
-                $equipo2=$datos->id_equipo2;
-                $goles1=$datos->goles_equipo1;
-                $goles2=$datos->goles_equipo2;
-                $fecha=$datos->fecha;
-                $res=$this->model->addPartido($equipo1,$equipo2,$goles1,$goles2,$fecha);
-                
-                if($res){
-                    $this->view->response("Partido agregado correctamente. ID=" . $res, 201);
-                }else    
-                    $this->view->response("Hubo un error al intentar agregar el partido", 500);
-            }else{
-                $this->view->response("Tienes que registrar todos los campos",404 );
-            }
-        } 
-    
 
     public function borrarPartido($params)
     {
@@ -100,33 +83,28 @@ class PartidoController
     {
         $equipo1 = $this->modelEquipo->getEquipo($datos->id_equipo1);
         $equipo2 = $this->modelEquipo->getEquipo($datos->id_equipo2);
-        if($equipo1===false ||  $equipo2===false){
+        if ($equipo1 === false ||  $equipo2 === false) {
             $this->view->response("El o los equipos que desea ingresar no existe", 404);
             die();
         }
-            
-        
     }
 
-    private function comprobarEquiposDistintos($datos){
-        $equipo1=$datos->id_equipo1;
-        $equipo2=$datos->id_equipo2;
-        if($equipo1==$equipo2){
+    private function comprobarEquiposDistintos($datos)
+    {
+        $equipo1 = $datos->id_equipo1;
+        $equipo2 = $datos->id_equipo2;
+        if ($equipo1 == $equipo2) {
             $this->view->response("los equipos no pueden ser iguales", 404);
             die();
         }
-       
-        
     }
 
     private function comprobarPartido($datos)
     {
-        $partido=$this->model->getCruceDePartido($datos->id_equipo1, $datos->id_equipo2);
-        if($partido){
+        $partido = $this->model->getCruceDePartido($datos->id_equipo1, $datos->id_equipo2);
+        if ($partido) {
             $this->view->response("El partido que desea ingresar ya existe", 409);
             die();
         }
-           
-        
     }
 }

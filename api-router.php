@@ -21,6 +21,8 @@ $router->addRoute('equipos', 'POST', 'EquipoController', 'agregarEquipo');
 $router->addRoute('equipos/:ID', 'PUT', 'EquipoController', 'actualizarEquipo');
 $router->addRoute('equipos/:ID', 'DELETE', 'EquipoController', 'borrarEquipo');
 $router->addRoute('equipos/:NOMBRE/jugadores', 'GET', 'EquipoController', 'getJugadoresxEquipo');
+$router->addRoute('equipos/:EQUIPO/partidos', 'GET', 'EquipoController', 'getPartidosxEquipo');
+
 
 $router->addRoute('jugadores', 'GET', 'JugadorController', 'getJugadores');
 $router->addRoute('jugadores/:ID', 'GET', 'JugadorController', 'getJugador');
@@ -31,7 +33,7 @@ $router->addRoute('partidos/:EQUIPO', 'GET', 'PartidoController', 'getPartidosxE
 $router->addRoute('partidos', 'POST', 'PartidoController', 'agregarPartido');
 $router->addRoute('partidos/:ID', 'DELETE', 'PartidoController', 'borrarPartido');
 
-$router->addRoute('login', 'GET', 'UserController', 'login');
+$router->addRoute('login', 'POST', 'UserController', 'login');
 
 /*
 var_dump($_GET["resource"]);
