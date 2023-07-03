@@ -3,10 +3,10 @@
 ### EQUIPOS:
 >* Nota: El Body En  Postman se deberia de escribir de la siguiente manera:
 Usar unicamente cuando se requiera MODIFICAR (PUT) o AGREGAR(POST) un equipo.<br>
-            { 
+            { <br>
                 "Nombre":......(String),
                 "Ciudad":.......(String),
-                "Socios":......(Number) 
+                "Socios":......(Number) <br>
             }
 
 
@@ -41,15 +41,15 @@ En este caso utilizando el verbo **DELETE** y pasandole nuevamente el **ID** del
 
 
 ### JUGADORES:
-> NOTA: el body en el Postman para jugadores se escribe de la siguiente manera.Usar unicamente cuando se requiera MODIFICAR (PUT) o AGREGAR(POST) un jugador:
-{
+> NOTA: el body en el Postman para jugadores se escribe de la siguiente manera.Usar unicamente cuando se requiera MODIFICAR (PUT) o AGREGAR(POST) un jugador.<br>
+{<br>
 "nombre":....(string),
 "apellido":.....(string),
 "dni" :.....(number), 
 "posicion":.....(string("POR","DEF","MED","DEL")),
 "telefono":......(number), 
 "edad" :....(number), 
-"id_equipo":.....(number) 
+"id_equipo":.....(number) <br>
 }
 
 #### *¿Como escribir las urls?*
@@ -71,14 +71,14 @@ Utilizando el verbo **DELETE** y enviando por parametro el **ID**, elimina un ju
 
 
 ### PARTIDOS: 
-> NOTA: el body en el Postman para partidos se escribe de la siguiente manera. Usar unicamente cuando se requiera MODIFICAR (PUT) o AGREGAR(POST) un partido:
-{
+> NOTA: el body en el Postman para partidos se escribe de la siguiente manera. Usar unicamente cuando se requiera MODIFICAR (PUT) o AGREGAR(POST) un partido<br>
+{<br>
 
 "id_equipo1":....(number),
 "id_equipo2":.....(number),
 "goles_equipo1" :.....(number), 
 "goles_equipo2":.....(number),
-"fecha":......(number), 
+"fecha":......(number)<br>
 
 }
 
