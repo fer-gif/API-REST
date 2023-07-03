@@ -25,6 +25,7 @@ DELETE 	api/partidos/:id 	                Borra un partido por el ID
 
 GET     api/posiciones                      Trae la tabla de posiciones ordenada por pts DESC
 
+
 GET	    api/equipos/?orderBy="nombre"&Asc	    Trae los equipos ordenados por nombre Ascendente
 GET	    api/jugadores/?orderBy="nombre"&Asc	    Trae los jugadores ordenados por nombre Ascendente
 GET 	api/jugadores/?pagina=1&limite=10	    Trae los primeros 10 jugadores
