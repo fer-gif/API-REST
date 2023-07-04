@@ -96,11 +96,11 @@ En este caso utilizando el verbo **DELETE** y pasandole nuevamente el **ID** del
 > NOTA: el body en el Postman para jugadores se escribe de la siguiente manera.Usar unicamente cuando se requiera MODIFICAR (PUT) o AGREGAR(POST) un jugador.<br>
 
 ```JSON
-{<br>
+{
 "nombre":"string",
 "apellido":"string",
 "dni" :"number",
-"posicion":"string("POR","DEF","MED","DEL")",
+"posicion":"string(POR,DEF,MED,DEL)",
 "telefono":"number", 
 "edad" :"number", 
 "id_equipo":"number" 
