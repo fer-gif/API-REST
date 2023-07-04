@@ -3,7 +3,7 @@
 class Conexion
 {
     private $host = "localhost";
-    private $db = "db_appfutbol5-api";
+    private $db = "db_appfutbol5";
     private $user = "root";
     private $pass = "";
     private $conexion;

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-07-2023 a las 14:17:21
+-- Tiempo de generación: 04-07-2023 a las 04:03:39
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -32,6 +32,8 @@ USE `db_appfutbol5-api`;
 CREATE TABLE `equipos` (
   `id_equipo` int(11) NOT NULL,
   `nombre` varchar(50) NOT NULL,
+  `ciudad` varchar(100) DEFAULT NULL,
+  `socios` int(11) DEFAULT NULL,
   `escudo` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -39,19 +41,19 @@ CREATE TABLE `equipos` (
 -- Volcado de datos para la tabla `equipos`
 --
 
-INSERT INTO `equipos` (`id_equipo`, `nombre`, `escudo`) VALUES
-(5, 'Platense', 'platense.png'),
-(11, 'River', NULL),
-(12, 'Boca', NULL),
-(13, 'Racing', 'racing.png'),
-(14, 'Estudiantes', NULL),
-(15, 'Maipu', NULL),
-(16, 'Gimnasioa', NULL),
-(18, 'Independiente', NULL),
-(25, 'Belgrano', NULL),
-(26, 'Intituto', NULL),
-(28, 'Arsenal', NULL),
-(31, 'Milan', NULL);
+INSERT INTO `equipos` (`id_equipo`, `nombre`, `ciudad`, `socios`, `escudo`) VALUES
+(5, 'Platense', 'Necochea', 2500, 'platense.png'),
+(11, 'River', 'Tandil', 8000, NULL),
+(12, 'Boca', 'Tandil', 5000, NULL),
+(13, 'Racing', 'Necochea', 3000, 'racing.png'),
+(14, 'Estudiantes', 'Tandil', 3400, NULL),
+(15, 'Maipu', 'Olavarria', 3500, NULL),
+(16, 'Gimnasioa', 'Necochea', 1500, NULL),
+(18, 'Independiente', 'Olavarria', 4500, NULL),
+(25, 'Belgrano', 'Neochea', 3000, NULL),
+(26, 'Intituto', 'Necochea', 1200, NULL),
+(28, 'Arsenal', 'Tandil', 1000, NULL),
+(31, 'Milan', 'Neochea', 500, NULL);
 
 -- --------------------------------------------------------
 

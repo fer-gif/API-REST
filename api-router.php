@@ -4,7 +4,6 @@ require_once './app/controller/EquipoController.php';
 require_once './app/controller/JugadorController.php';
 require_once './app/controller/PartidoController.php';
 require_once './app/controller/UserController.php';
-require_once './libs/Utils.php';
 
 $router = new Router();
 
