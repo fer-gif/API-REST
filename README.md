@@ -33,9 +33,9 @@ Para generar dicho token, el usuario debe loguearse con su usuario y contraseña
     Asi se vera el la respueseta generada:<br>
     
     ```JSON
-{<br>
-    "token": <br>
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY4ODQ5MjIxNiwiZXhwIjoxNjg4NDk1ODE2LCJkYXRhIjp7InVzdWFyaW8iOiJBZG1pbiIsInBlcm1pc29zIjo1LCJlcXVpcG8iOm51bGx9fQ==.5bYBKH8n0N5yaiNNNQhiLn292doZs21Y14bWUT7s90U="<br>
+{
+    "token": 
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY4ODQ5MjIxNiwiZXhwIjoxNjg4NDk1ODE2LCJkYXRhIjp7InVzdWFyaW8iOiJBZG1pbiIsInBlcm1pc29zIjo1LCJlcXVpcG8iOm51bGx9fQ==.5bYBKH8n0N5yaiNNNQhiLn292doZs21Y14bWUT7s90U="
 }
 ```
 
@@ -59,10 +59,10 @@ fetch(‘url/api/equipos’, {
 >* Nota: El Body En  Postman se deberia de escribir de la siguiente manera:
 Usar unicamente cuando se requiera MODIFICAR (PUT) o AGREGAR(POST) un equipo.<br>
 ```JSON
-            { <br>
-                "Nombre":......(String),<br>
-                "Ciudad":.......(String),<br>
-                "Socios":......(Number) <br>
+            { 
+                "Nombre":"" //(String),
+                "Ciudad":"" //(String),
+                "Socios":"" //(Number) 
             }
 ```
 
@@ -98,13 +98,13 @@ En este caso utilizando el verbo **DELETE** y pasandole nuevamente el **ID** del
 
 ```JSON
 {<br>
-"nombre":....(string),<br>
-"apellido":.....(string),<br>
-"dni" :.....(number), <br>
-"posicion":.....(string("POR","DEF","MED","DEL")),<br>
-"telefono":......(number), <br>
-"edad" :....(number), <br>
-"id_equipo":.....(number) <br>
+"nombre":""     //(string),
+"apellido":""    //(string),
+"dni" :""        //(number),
+"posicion":""    //(string("POR","DEF","MED","DEL")),
+"telefono":""    //(number), 
+"edad" :""        //(number), 
+"id_equipo":""    //(number) 
 }
 ```
 
@@ -130,12 +130,12 @@ Utilizando el verbo **DELETE** y enviando por parametro el **ID**, elimina un ju
 > NOTA: el body en el Postman para partidos se escribe de la siguiente manera. Usar unicamente cuando se requiera MODIFICAR (PUT) o AGREGAR(POST) un partido.<br>
 
 ```JSON
-{<br>
-"id_equipo1":....(number),<br>
-"id_equipo2":.....(number),<br>
-"goles_equipo1" :.....(number), <br>
-"goles_equipo2":.....(number),<br>
-"fecha":......(number)<br>
+{
+"id_equipo1":""        //(number),
+"id_equipo2":""        //(number),
+"goles_equipo1" :""    //(number), 
+"goles_equipo2":""    //(number),
+"fecha":""            //(number)
 }
 ```
 
