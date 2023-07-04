@@ -22,9 +22,9 @@ Para generar dicho token, el usuario debe loguearse con su usuario y contraseña
 
 >- Para login de usuario el endpoint disponible "api/login" con metodo POST en el body del login aparecera:<br>
 ```JSON
-    {<br>
-        "usuario":"Admin",<br>
-        "password":"admin1234"<br>
+    {
+        "usuario":"Admin",
+        "password":"admin1234"
     }
 ```
 >- Si se corrobora correctamente el usuario, la respuesta sera un token que tendra que ser guardado por el usuario del lado del front-end para poder realizar futuras peticiones. El tiempo de validez del dura 60 minutos. 
