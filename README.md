@@ -1,8 +1,9 @@
 # API Proyecto Futbol5
 
+Para darle funcionalidad a este proyecto y utilizar de manera correcta la API-REST, se debe escribir, siguiendo las instrucciones, las urls que se requieran para evitar posibles errores o inconvenientes.
 
-**CONTENIDOS**
-[TOC]
+###  IMPORTANTE!
+las urls en Postman se escriben *'http://localhost/FUTBOL5-api/api/... '   *pero en este informe cambiamos esta direccion por *'api/...'*.
 
 ### EQUIPOS:
 >* Nota: El Body En  Postman se deberia de escribir de la siguiente manera:
@@ -100,6 +101,54 @@ Utilizando el verbo **DELETE** y enviando por parametro el **ID**, elimina un pa
 
 
 ### QUERY PARAMS:
+Al momento de acceder a un endpoint para buscar una colección completa tanto del recurso equipos por medio de api/equipos o del recurso jugadores por medio 
+de api/jugadores (ambos con el método GET), hay disponible los siguientes queryParams para poder organizar o filtrar los resultados:
+
+- ##### orderBy=:campo&order=:criterio
+Ordena el resultado de la búsqueda según el valor de **:campo** y de forma que se lo indique el atributo **:criterio** (**:campo** debe ser un atributo del recurso). 
+
+##### CAMPOS DISPONIBLES SEGUN RECURSOS:
+
+EQUIPOS  | JUGADORES
+---------| -------------
+"nombre"  | "nombre"
+"ciudad"  | "apellido" 
+"socios"  | "dni"
+            |"posicion"
+            | "telefono"
+            | "edad"
+
+**:criterio** debe ser el formato de ordenamiento. Están disponibles "ASC" o "DESC". 
+Se puede especificar únicamente el parámetro orderBy. En este caso se retornan todos los registros que coincidan con :campo ordenados de forma ASC.
+
+- ##### cantidad=:cant&pagina=:paginas
+Pagina el resultado obtenido de la consulta de acuerdo a la cantidad de registros indicados en :cant y la página que se desea indicado en el valor de :pagina
+**:cant** indica la cantidad de registros que se desean obtener de la consulta realizada. 
+**:pagina** indica el numero de pagina que se desea obtener a partir del atributo :cant especificado
+cantidad=10&pagina=2 retornara la segunda página de los registros agrupados de a 10
+Se puede especificar únicamente el parámetro cantidad. En este caso se retornan los primero :cant registros de la consulta.
+cantidad=7 retornara la primera página de los registros agrupados de a 7 elementos.
+
+- ##### filter=:filtro&value=:valor
+Filtra el resultado de la búsqueda retornando los registros que en su atributo :filtro coincida con el valor que se le indica en :valor
+**:filtro** indica el atributo por el cual se desea realizar la búsqueda. Para el recurso jugadores estan disponibles los valores "nombre", "apellido", "dni",
+"edad","posicion" y "telefono". Para el recurso equipos están disponible los valores "nombre", "ciudad" y "socios"
+:valor indica el valor por el cual queremos filtrar el recurso.
+Siempre que se indique el parámetro filter se debe indicar el parámetro value. En caso contrario se retorna el recurso sin ser filtrado.
+
+Los queryParams pueden combinarse para obtener resultados más precisos. Así se pueden tener las siguientes combinaciones:
+
+Ordenados por un campo y paginado
+**orderBy=:campo&order=:criterio&cantidad=:cant&pagina=:paginas**
+
+Filtrado por un campo filtro y ordenado por un campo
+**filter=:filtro&value=:valor&orderBy=:campo&order=:criterio**
+
+Filtrado por un campo filtro y paginado
+**filter=:filtro&value=:valor&cantidad=:cant&pagina=:paginas**
+
+Filtrado por un campo filtro, ordenado por un campo y paginado
+**filter=:filtro&value=:valor&orderBy=:campo&order=:criterio&cantidad=:cant&pagina=:paginas**
 
 
 ### TOKEN:
