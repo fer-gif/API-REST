@@ -142,8 +142,6 @@ Filtra el resultado de la búsqueda retornando los registros que en su atributo 
 
 Siempre que se indique el parámetro filter se debe indicar el parámetro value. En caso contrario se retorna el recurso sin ser filtrado.
 
-
-
 >Los queryParams pueden combinarse para obtener resultados más precisos. Así se pueden tener las siguientes combinaciones:<br>
 Ordenados por un campo y paginado:<br>
 **orderBy=:campo&order=:criterio&cantidad=:cant&pagina=:paginas**<br>
