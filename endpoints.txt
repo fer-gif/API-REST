@@ -6,26 +6,25 @@ GET 	api/equipos/:nombre	                Trae el equipo con el NOMBRE
 POST 	api/equipos		                    Guarda un equipo
 PUT 	api/equipos/:id		                Actualiza los datos del equipo con el ID
 DELETE 	api/equipos/:id		                Borra el equipo con el ID
+GET     api/equipos/:NOMBRE/jugadores       Trae todos los jugadores de un equipo(:NOMBRE)
+GET     api/equipos/:EQUIPO/partidos        Trae todos los partidos de un equipo(:EQUIPO)
 
 GET 	api/jugadores		                Trae todos los jugadores
 GET 	api/jugadores/:id	                Trae el jugador con el ID
-GET 	api/jugadores/:dni	                Trae el jugador con el DNI
 POST 	api/jugadores		                Guarda un jugador
 PUT 	api/jugadores/:id	                Actualiza un jugador con el ID
 DELETE 	api/jugadores/:id 	                Borra un jugador con el ID
 
+
 GET 	api/partidos		                Trae todos los partidos
 GET 	api/partidos/:id	                Trae un partido con el ID
-GET 	api/partidos/:idEquipo	            Trae todos los partidos de un equipo
-GET     pia/partidos/:nroFecha              Trae los partidos de la fecha nroFecha indicada
-GET     api/partidos/ultimafecha            Trae los partidos de la ultima fecha (La fecha mas grande)
 POST 	api/partidos		                Guarda un partido
 PUT 	api/partidos/:id	                Actualiza un partido por el ID
 DELETE 	api/partidos/:id 	                Borra un partido por el ID
 
-GET     api/posiciones                      Trae la tabla de posiciones ordenada por pts DESC
+POST    api/login                           Procesa los datos enviados por el login. Si es correcto devuelve un toquen
 
+GET	    api/equipos/?orderBy=nombre&order=Asc	        Trae los equipos ordenados por nombre Ascendente
+GET	    api/equipos/?filter=ciudad&value=Necochea	    Trae los equipos filtrados por ciudad(Necochea)
+GET 	api/jugadores/?pagina=1&limite=10	            Trae los primeros 10 jugadores
 
-GET	    api/equipos/?orderBy="nombre"&Asc	    Trae los equipos ordenados por nombre Ascendente
-GET	    api/jugadores/?orderBy="nombre"&Asc	    Trae los jugadores ordenados por nombre Ascendente
-GET 	api/jugadores/?pagina=1&limite=10	    Trae los primeros 10 jugadores

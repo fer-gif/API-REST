@@ -2,6 +2,8 @@
 require_once 'app/model/PartidoModel.php';
 require_once 'app/model/EquipoModel.php';
 require_once 'app/view/api.view.php';
+require_once './libs/AuthHelper.php';
+
 
 class PartidoController
 {
