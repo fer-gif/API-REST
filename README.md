@@ -75,9 +75,6 @@ A traves del verbo **GET** traemos todos los equipos que se encuentran en la bas
 - #### api/equipos/:PARAMETRO (ID o NOMBRE):
 Con el verbo **GET** y escribiendo en "**PARAMETRO**" el ID o el nombre del equipo, captamos los datos de ese equipo en particular.
 
-api/equipos/:ID :
-En este caso utilizando el verbo DELETE y pasandole nuevamente el ID del equipo, borramos ese equipo de la base de datos.
-
 - #### api/equipos/:NOMBRE/jugadores:
 Utilizando nuevamente el verbo **GET** y ademas colocando en "**NOMBRE**" EL nombre del equipo, accedemos a los jugadores que tiene ese equipo.
 
