@@ -104,13 +104,7 @@ Utilizando el verbo **DELETE** y enviando por parametro el **ID**, elimina un pa
 Al momento de acceder a un endpoint para buscar una colección completa tanto del recurso equipos por medio de api/equipos o del recurso jugadores por medio 
 de api/jugadores (ambos con el método GET), hay disponible los siguientes queryParams para poder organizar o filtrar los resultados:
 
-- #### orderBy=:campo&order=:criterio
-Ordena el resultado de la búsqueda según el valor de **:campo** y de forma que se lo indique el atributo **:criterio**.
-Se puede especificar únicamente el parámetro orderBy. En este caso se retornan todos los registros que coincidan con :campo ordenados de forma ASC. <br>
----->**:campo**:debe ser un atributo del recurso. <br>
----->**:criterio**: debe ser el formato de ordenamiento. Están disponibles "ASC" o "DESC".  <br>
-
-##### CAMPOS DISPONIBLES SEGUN RECURSOS:
+>##### TABLAS CON CAMPOS DISPONIBLES SEGUN RECURSOS:
 
  | EQUIPOS   | 
  | -------------  | 
@@ -127,9 +121,11 @@ Se puede especificar únicamente el parámetro orderBy. En este caso se retornan
  |"telefono"  |
  |  "edad"    |
 
-
-
-
+- #### orderBy=:campo&order=:criterio
+Ordena el resultado de la búsqueda según el valor de **:campo** y de forma que se lo indique el atributo **:criterio**.
+Se puede especificar únicamente el parámetro orderBy. En este caso se retornan todos los registros que coincidan con :campo ordenados de forma ASC. <br>
+---->**:campo**:debe ser un atributo del recurso. <br>
+---->**:criterio**: debe ser el formato de ordenamiento. Están disponibles "ASC" o "DESC".  <br>
 
 + #### cantidad=:cant&pagina=:paginas
 Pagina el resultado obtenido de la consulta de acuerdo a la cantidad de registros indicados en **:cant** y la página que se desea indicado en el valor de **:pagina**.
@@ -144,21 +140,18 @@ Filtra el resultado de la búsqueda retornando los registros que en su atributo 
   ---->**:filtro** indica el atributo por el cual se desea realizar la búsqueda.<br>
   ---->**:valor** indica el valor por el cual queremos filtrar el recurso. <br>
 
-Para el recurso jugadores estan disponibles los valores "nombre", "apellido", "dni",
-"edad","posicion" y "telefono". Para el recurso equipos están disponible los valores "nombre", "ciudad" y "socios"
-
->Siempre que se indique el parámetro filter se debe indicar el parámetro value. En caso contrario se retorna el recurso sin ser filtrado.
+Siempre que se indique el parámetro filter se debe indicar el parámetro value. En caso contrario se retorna el recurso sin ser filtrado.
 
 
 
 >Los queryParams pueden combinarse para obtener resultados más precisos. Así se pueden tener las siguientes combinaciones:<br>
-Ordenados por un campo y paginado:
+Ordenados por un campo y paginado:<br>
 **orderBy=:campo&order=:criterio&cantidad=:cant&pagina=:paginas**<br>
-Filtrado por un campo filtro y ordenado por un campo:
+Filtrado por un campo filtro y ordenado por un campo:<br>
 **filter=:filtro&value=:valor&orderBy=:campo&order=:criterio**<br>
-Filtrado por un campo filtro y paginado:
+Filtrado por un campo filtro y paginado:<br>
 **filter=:filtro&value=:valor&cantidad=:cant&pagina=:paginas**<br>
-Filtrado por un campo filtro, ordenado por un campo y paginado:
+Filtrado por un campo filtro, ordenado por un campo y paginado:<br>
 **filter=:filtro&value=:valor&orderBy=:campo&order=:criterio&cantidad=:cant&pagina=:paginas**<br>
 
 
