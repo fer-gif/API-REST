@@ -1,0 +1,613 @@
+{
+	"info": {
+		"_postman_id": "f891f78a-982f-4060-8185-2b1df98590d1",
+		"name": "futbol5-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24218169"
+	},
+	"item": [
+		{
+			"name": "Equipos",
+			"item": [
+				{
+					"name": "GET EQUIPO ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/FUTBOL5-api/api/equipos/28",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"FUTBOL5-api",
+								"api",
+								"equipos",
+								"28"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET EQUIPO NOMBRE",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\":\"Alan\",\r\n    \"apellido\": \"Rondin\",\r\n    \"dni\":25635890,\r\n    \"posicion\":\"MED\",\r\n    \"telefono\":458788,\r\n    \"id_equipo\":13\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/FUTBOL5-api/api/equipos/river",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"FUTBOL5-api",
+								"api",
+								"equipos",
+								"river"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST EQUIPOS",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Ministerio\",\r\n    \"ciudad\": \"Quequen\",\r\n    \"socios\" : 0\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost/FUTBOL5-api/api/equipos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"FUTBOL5-api",
+								"api",
+								"equipos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE EQUIPOS",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/FUTBOL5-api/api/equipos/13",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"FUTBOL5-api",
+								"api",
+								"equipos",
+								"13"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT EQUIPOS",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Ferro\",\r\n    \"ciudad\": \"Tandil\",\r\n    \"socios\" : 3000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/FUTBOL5-api/api/equipos/28",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"FUTBOL5-api",
+								"api",
+								"equipos",
+								"28"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET JUGADORES X EQUIPO",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/FUTBOL5-api/api/equipos/boca/jugadores",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"FUTBOL5-api",
+								"api",
+								"equipos",
+								"boca",
+								"jugadores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET PARTIDOS X EQUIPO",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/FUTBOL5-api/api/equipos/river/partidos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"FUTBOL5-api",
+								"api",
+								"equipos",
+								"river",
+								"partidos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET EQUIPOS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/FUTBOL5-api/api/equipos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"FUTBOL5-api",
+								"api",
+								"equipos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Jugadores",
+			"item": [
+				{
+					"name": "GET JUGADORES",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/FUTBOL5-api/api/jugadores",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"FUTBOL5-api",
+								"api",
+								"jugadores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET JUGADOR ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/FUTBOL5-api/api/jugadores/20",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"FUTBOL5-api",
+								"api",
+								"jugadores",
+								"20"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT JUGADORES ID",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dni\": 30548999,\r\n    \"nombre\": \"Pity\",\r\n    \"apellido\": \"Martinez\",\r\n    \"telefono\": 0,\r\n    \"posicion\": \"DEL\",\r\n    \"edad\": 39,\r\n    \"id_equipo\": 11\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/FUTBOL5-api/api/jugadores/20",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"FUTBOL5-api",
+								"api",
+								"jugadores",
+								"20"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST JUGADORES",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dni\": 36520367,\r\n    \"nombre\": \"Pity\",\r\n    \"apellido\": \"Martinez\",\r\n    \"telefono\": 0,\r\n    \"posicion\": \"DEL\",\r\n    \"edad\": 39,\r\n    \"id_equipo\": 11\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost/FUTBOL5-api/api/jugadores",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"FUTBOL5-api",
+								"api",
+								"jugadores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE JUGADORES ID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/FUTBOL5-api/api/jugadores/20",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"FUTBOL5-api",
+								"api",
+								"jugadores",
+								"20"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "LOGIN",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"usuario\":\"Admin\",\r\n    \"password\":\"admin1234\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost/FUTBOL5-api/api/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"FUTBOL5-api",
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Partidos",
+			"item": [
+				{
+					"name": "GET PARTIDOS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/FUTBOL5-api/api/partidos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"FUTBOL5-api",
+								"api",
+								"partidos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET PARTIDO ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/FUTBOL5-api/api/partidos/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"FUTBOL5-api",
+								"api",
+								"partidos",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT PARTIDOS ID",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"goles_equipo1\": 3,\r\n    \"goles_equipo2\": 2,\r\n    \"fecha\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/FUTBOL5-api/api/partidos/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"FUTBOL5-api",
+								"api",
+								"partidos",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST PARTIDOS ",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n        \"id_equipo1\": 5,\r\n        \"id_equipo2\": 11,\r\n        \"goles_equipo1\": 3,\r\n        \"goles_equipo2\": 0,\r\n        \"fecha\": 1\r\n    }"
+						},
+						"url": {
+							"raw": "http://localhost/FUTBOL5-api/api/partidos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"FUTBOL5-api",
+								"api",
+								"partidos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE PARTIDOS ID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/FUTBOL5-api/api/partidos/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"FUTBOL5-api",
+								"api",
+								"partidos",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "QueryParams",
+			"item": [
+				{
+					"name": "FILTER & VALUE",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/FUTBOL5-api/api/equipos?filter=socios&value=3000",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"FUTBOL5-api",
+								"api",
+								"equipos"
+							],
+							"query": [
+								{
+									"key": "filter",
+									"value": "socios"
+								},
+								{
+									"key": "value",
+									"value": "3000"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ORDER BY & ORDER",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/FUTBOL5-api/api/equipos?orderBy=ciudad&order=DESC",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"FUTBOL5-api",
+								"api",
+								"equipos"
+							],
+							"query": [
+								{
+									"key": "orderBy",
+									"value": "ciudad"
+								},
+								{
+									"key": "order",
+									"value": "DESC"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CANTIDAD & PAGINA",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/FUTBOL5-api/api/equipos?cantidad=5&pagina=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"FUTBOL5-api",
+								"api",
+								"equipos"
+							],
+							"query": [
+								{
+									"key": "cantidad",
+									"value": "5"
+								},
+								{
+									"key": "pagina",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY4ODQzNzA4NiwiZXhwIjoxNjg4NDQwNjg2LCJkYXRhIjp7InVzdWFyaW8iOiJBZG1pbiIsInBlcm1pc29zIjo1LCJlcXVpcG8iOm51bGx9fQ==.SYC4F8MgjTgesy6CXeppOiIZx3rQRJ6zKOxQqCqrM/Q=",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-07-2023 a las 04:03:39
+-- Tiempo de generación: 04-07-2023 a las 04:56:50
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -45,15 +45,16 @@ INSERT INTO `equipos` (`id_equipo`, `nombre`, `ciudad`, `socios`, `escudo`) VALU
 (5, 'Platense', 'Necochea', 2500, 'platense.png'),
 (11, 'River', 'Tandil', 8000, NULL),
 (12, 'Boca', 'Tandil', 5000, NULL),
-(13, 'Racing', 'Necochea', 3000, 'racing.png'),
 (14, 'Estudiantes', 'Tandil', 3400, NULL),
 (15, 'Maipu', 'Olavarria', 3500, NULL),
 (16, 'Gimnasioa', 'Necochea', 1500, NULL),
 (18, 'Independiente', 'Olavarria', 4500, NULL),
 (25, 'Belgrano', 'Neochea', 3000, NULL),
 (26, 'Intituto', 'Necochea', 1200, NULL),
-(28, 'Arsenal', 'Tandil', 1000, NULL),
-(31, 'Milan', 'Neochea', 500, NULL);
+(28, 'Ferro', 'Tandil', 3000, NULL),
+(31, 'Milan', 'Neochea', 500, NULL),
+(32, 'Luz y Fuerza', 'Necochea', 3000, NULL),
+(33, 'Ministerio', 'Quequen', 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -69,6 +70,7 @@ CREATE TABLE `jugadores` (
   `telefono` int(11) DEFAULT NULL,
   `posicion` varchar(5) NOT NULL,
   `foto` text DEFAULT NULL,
+  `edad` int(11) DEFAULT NULL,
   `id_equipo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -76,36 +78,31 @@ CREATE TABLE `jugadores` (
 -- Volcado de datos para la tabla `jugadores`
 --
 
-INSERT INTO `jugadores` (`id_jugador`, `dni`, `nombre`, `apellido`, `telefono`, `posicion`, `foto`, `id_equipo`) VALUES
-(15, 30548888, 'Pipa', 'Garcia', 0, 'DEF', NULL, 5),
-(19, 25145666, 'Mario', 'Diaz', 0, 'POR', NULL, 11),
-(20, 30548999, 'Pity', 'Martinez', 0, 'DEL', NULL, 11),
-(21, 35641222, 'Cristian', 'Zapata', 456999, 'DEF', NULL, 11),
-(22, 34215666, 'Matias', 'Dindart', 0, 'MED', NULL, 11),
-(23, 29065448, 'Franco', 'Figal', 15887888, 'POR', NULL, 12),
-(24, 38156354, 'Javier', 'Villanueba', 0, 'MED', NULL, 12),
-(25, 7546, 'Lautaro', 'Garcia', 2344555, 'MED', NULL, 13),
-(26, 25887777, 'Robertp', 'Lamaica', 0, 'POR', NULL, 13),
-(27, 35879665, 'Javier', 'Larrondo', 0, 'DEF', NULL, 13),
-(28, 36451233, 'Marcelo', 'Morello', 0, 'POR', NULL, 5),
-(29, 25687963, 'Fernando', 'Castañeda', 0, 'MED', NULL, 5),
-(30, 28964563, 'Dardo', 'Fuceneco', 0, 'DEL', NULL, 5),
-(31, 27896541, 'Gabriel', 'Roncaglia', 0, 'DEF', NULL, 5),
-(32, 26547896, 'Cristian', 'Rinaudo', 0, 'DEF', NULL, 11),
-(33, 35698120, 'Ismael', 'Frontier', 0, 'DEF', NULL, 12),
-(34, 34102390, 'Chango', 'Sosa', 15879966, 'DEL', NULL, 12),
-(35, 34109708, 'Paulino', 'Frances', 0, 'DEF', NULL, 12),
-(36, 30157803, 'Jordan', 'Micheal', 0, 'DEL', NULL, 13),
-(37, 28463030, 'Santiago', 'Santillan', 0, 'DEF', NULL, 13),
-(38, 24876302, 'Damian', 'Ledesma', 45987633, 'POR', NULL, 14),
-(39, 36789456, 'Fermin', 'Hernando', 0, 'DEL', NULL, 14),
-(40, 34109005, 'Mario', 'Martino', 0, 'DEF', NULL, 14),
-(41, 30548700, 'Lautaro', 'Pedernera', 0, 'MED', NULL, 14),
-(42, 37456899, 'Patricio', 'Perez', 15478987, 'DEF', NULL, 14),
-(43, 29874301, 'Samuel', 'Equemendiba', 15879999, 'DEL', NULL, 15),
-(44, 20548796, 'Humberto', 'Zoilo', 0, 'DEF', NULL, 15),
-(45, 31450360, 'Graciano', 'Modas', 4587777, 'POR', NULL, 15),
-(46, 25690321, 'Cristian', 'Lotartaro', 0, 'DEF', NULL, 15);
+INSERT INTO `jugadores` (`id_jugador`, `dni`, `nombre`, `apellido`, `telefono`, `posicion`, `foto`, `edad`, `id_equipo`) VALUES
+(0, 25690321, 'Cristian', 'Lotartaro', 0, 'DEF', NULL, 42, 15),
+(15, 30548888, 'Pipa', 'Garcia', 0, 'DEF', NULL, 38, 5),
+(19, 25145666, 'Mario', 'Diaz', 0, 'POR', NULL, 43, 11),
+(20, 30548999, 'Pity', 'Martinez', 0, 'DEL', NULL, 38, 11),
+(21, 35641222, 'Cristian', 'Zapata', 456999, 'DEF', NULL, 35, 11),
+(22, 34215666, 'Matias', 'Dindart', 0, 'MED', NULL, 34, 11),
+(23, 29065448, 'Franco', 'Figal', 15887888, 'POR', NULL, 40, 12),
+(24, 38156354, 'Javier', 'Villanueba', 0, 'MED', NULL, 28, 12),
+(28, 36451233, 'Marcelo', 'Morello', 0, 'POR', NULL, 35, 5),
+(29, 25687963, 'Fernando', 'Castañeda', 0, 'MED', NULL, 43, 5),
+(30, 28964563, 'Dardo', 'Fuceneco', 0, 'DEL', NULL, 40, 5),
+(31, 27896541, 'Gabriel', 'Roncaglia', 0, 'DEF', NULL, 42, 5),
+(32, 26547896, 'Cristian', 'Rinaudo', 0, 'DEF', NULL, 41, 11),
+(33, 35698120, 'Ismael', 'Frontier', 0, 'DEF', NULL, 35, 12),
+(34, 34102390, 'Chango', 'Sosa', 15879966, 'DEL', NULL, 36, 12),
+(35, 34109708, 'Paulino', 'Frances', 0, 'DEF', NULL, 36, 12),
+(38, 24876302, 'Damian', 'Ledesma', 45987633, 'POR', NULL, 45, 14),
+(39, 36789456, 'Fermin', 'Hernando', 0, 'DEL', NULL, 35, 14),
+(40, 34109005, 'Mario', 'Martino', 0, 'DEF', NULL, 34, 14),
+(41, 30548700, 'Lautaro', 'Pedernera', 0, 'MED', NULL, 39, 14),
+(42, 37456899, 'Patricio', 'Perez', 15478987, 'DEF', NULL, 30, 14),
+(43, 29874301, 'Samuel', 'Equemendiba', 15879999, 'DEL', NULL, 40, 15),
+(44, 20548796, 'Humberto', 'Zoilo', 0, 'DEF', NULL, 47, 15),
+(45, 31450360, 'Graciano', 'Modas', 4587777, 'POR', NULL, 38, 15);
 
 -- --------------------------------------------------------
 
@@ -128,11 +125,10 @@ CREATE TABLE `partidos` (
 
 INSERT INTO `partidos` (`id_partido`, `id_equipo1`, `id_equipo2`, `goles_equipo1`, `goles_equipo2`, `fecha`) VALUES
 (2, 5, 11, 1, 1, 1),
-(3, 12, 13, 3, 2, 1),
-(4, 14, 15, 5, 0, 1),
 (8, 11, 12, 9, 0, 3),
 (9, 5, 14, 2, 4, 3),
-(15, 13, 15, 0, 1, 4);
+(17, 18, 16, 4, 2, 2),
+(18, 25, 26, 2, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -156,7 +152,6 @@ CREATE TABLE `usuarios` (
 INSERT INTO `usuarios` (`id_usuario`, `usuario`, `password`, `email`, `permisos`, `id_equipo`) VALUES
 (1, 'Admin', '$2y$10$g9jCUa3Pu9NxQKIYwNy.gerhYqlOQNtjPx7W0X6jiNXrO/op/iIfq', '', 5, NULL),
 (10, 'capiPlatense', '$2y$10$27gA43ID6O/3NgH77S8dsOV4k3cYautXQXOQxlCEN910l19dfZYSu', '', 3, 5),
-(14, 'capiRacing', '$2y$10$dQ2QI0tiG/UvmAsLm7xprONFQEhKXU5j876JEj/pR8aDbs5L1pj/S', 'racing@gmail.com', 3, 13),
 (15, 'capiRiver', '$2y$10$m1bBqea5QjF9Xqc4vmNxveJHPUEIMgNQ4xMmIZ5X1npoLrgwzZuGG', 'river@gmail.com', 3, 11),
 (16, 'capiEstudiantes', '$2y$10$zbMh.sEYWhF4gr6fYDks0eG6F/P2tc89YeOVmvU3yEDI.SPrXMnnu', '', 3, 14),
 (17, 'capiIsotopos', '$2y$10$yIw09F8goyMFsIo.ieSxnONEkyzvjkOzOpPwHfCCWC9v3cAcl/OvK', '', 3, 15);
@@ -204,7 +199,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `equipos`
 --
 ALTER TABLE `equipos`
-  MODIFY `id_equipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id_equipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT de la tabla `jugadores`
@@ -216,7 +211,7 @@ ALTER TABLE `jugadores`
 -- AUTO_INCREMENT de la tabla `partidos`
 --
 ALTER TABLE `partidos`
-  MODIFY `id_partido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_partido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`

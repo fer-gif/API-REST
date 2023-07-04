@@ -150,10 +150,10 @@ class EquipoController
             if ($partidos) {
                 $this->view->response($partidos, 200);
             } else {
-                $this->view->response("No existe partidos para este equipo", 204);
+                $this->view->response("No existen partidos para este equipo", 404);
             }
         } else {
-            $this->view->response("No existe un equipo con ese id", 404);
+            $this->view->response("Error. No existe un equipo con ese nombre en la base de datos", 404);
         }
     }
 
@@ -165,7 +165,7 @@ class EquipoController
         $equipo = $this->model->getEquipo(null, $nombre);
         if ($equipo)
             if (!isset($id) || $equipo->id_equipo != $id) {
-                $this->view->response("El equipo con el nombre " . $nombre . " ya existe", 409);
+                $this->view->response("Error. El equipo con el nombre " . $nombre . " ya existe", 409);
                 die();
             }
     }
