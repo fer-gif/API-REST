@@ -131,33 +131,31 @@ Se puede especificar únicamente el parámetro orderBy. En este caso se retornan
 
 + #### cantidad=:cant&pagina=:paginas
 Pagina el resultado obtenido de la consulta de acuerdo a la cantidad de registros indicados en **:cant** y la página que se desea indicado en el valor de **:pagina**.
-   + **:cant** indica la cantidad de registros que se desean obtener de la consulta realizada.
-   + **:pagina** indica el numero de pagina que se desea obtener a partir del atributo :cant especificado.
+   ---->**:cant**: indica la cantidad de registros que se desean obtener de la consulta realizada.
+   ---->**:pagina**: indica el numero de pagina que se desea obtener a partir del atributo :cant especificado.
 
 >EJEMPLO: **'cantidad=10&pagina=2'**
 Retornara la segunda página de los registros agrupados de a 10. Se puede especificar únicamente el parámetro cantidad. En este caso se retornan los primero **:cant** registros de la consulta. cantidad=7 retornara la primera página de los registros agrupados de a 7 elementos.
 
 - #### filter=:filtro&value=:valor
 Filtra el resultado de la búsqueda retornando los registros que en su atributo **:filtro** coincida con el valor que se le indica en **:valor**
-**:filtro** indica el atributo por el cual se desea realizar la búsqueda. Para el recurso jugadores estan disponibles los valores "nombre", "apellido", "dni",
+  ---->**:filtro** indica el atributo por el cual se desea realizar la búsqueda. 
+  ---->**:valor** indica el valor por el cual queremos filtrar el recurso.
+Para el recurso jugadores estan disponibles los valores "nombre", "apellido", "dni",
 "edad","posicion" y "telefono". Para el recurso equipos están disponible los valores "nombre", "ciudad" y "socios"
-:valor indica el valor por el cual queremos filtrar el recurso.
+
 Siempre que se indique el parámetro filter se debe indicar el parámetro value. En caso contrario se retorna el recurso sin ser filtrado.
 
 
 
-Los queryParams pueden combinarse para obtener resultados más precisos. Así se pueden tener las siguientes combinaciones:
-
-Ordenados por un campo y paginado
+>Los queryParams pueden combinarse para obtener resultados más precisos. Así se pueden tener las siguientes combinaciones:
+Ordenados por un campo y paginado:
 **orderBy=:campo&order=:criterio&cantidad=:cant&pagina=:paginas**
-
-Filtrado por un campo filtro y ordenado por un campo
+Filtrado por un campo filtro y ordenado por un campo:
 **filter=:filtro&value=:valor&orderBy=:campo&order=:criterio**
-
-Filtrado por un campo filtro y paginado
+Filtrado por un campo filtro y paginado:
 **filter=:filtro&value=:valor&cantidad=:cant&pagina=:paginas**
-
-Filtrado por un campo filtro, ordenado por un campo y paginado
+Filtrado por un campo filtro, ordenado por un campo y paginado:
 **filter=:filtro&value=:valor&orderBy=:campo&order=:criterio&cantidad=:cant&pagina=:paginas**
 
 
