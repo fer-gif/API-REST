@@ -114,9 +114,9 @@ EQUIPOS  | JUGADORES
 "nombre"  | "nombre"
 "ciudad"  | "apellido" 
 "socios"  | "dni"
-            |"posicion"
-            | "telefono"
-            | "edad"
+|"posicion"
+|"telefono"
+| "edad"
 
 **:criterio** debe ser el formato de ordenamiento. Están disponibles "ASC" o "DESC". 
 Se puede especificar únicamente el parámetro orderBy. En este caso se retornan todos los registros que coincidan con :campo ordenados de forma ASC.
