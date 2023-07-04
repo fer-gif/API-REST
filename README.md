@@ -21,10 +21,12 @@ Para generar dicho token, el usuario debe loguearse con su usuario y contraseña
 
 
 >- Para login de usuario el endpoint disponible "api/login" con metodo POST en el body del login aparecera:<br>
+```JSON
     {<br>
         "usuario":"Admin",<br>
         "password":"admin1234"<br>
     }
+```
 >- Si se corrobora correctamente el usuario, la respuesta sera un token que tendra que ser guardado por el usuario del lado del front-end para poder realizar futuras peticiones. El tiempo de validez del dura 60 minutos. 
     Asi se vera el la respueseta generada:<br>
 {<br>
@@ -32,7 +34,20 @@ Para generar dicho token, el usuario debe loguearse con su usuario y contraseña
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY4ODQ5MjIxNiwiZXhwIjoxNjg4NDk1ODE2LCJkYXRhIjp7InVzdWFyaW8iOiJBZG1pbiIsInBlcm1pc29zIjo1LCJlcXVpcG8iOm51bGx9fQ==.5bYBKH8n0N5yaiNNNQhiLn292doZs21Y14bWUT7s90U="<br>
 }
 
-
+Al momento de realizar una petición a la API con un método POST, PUT o DELETE, se debe incluir en el header del mensaje el atributo ‘Authorization’ : ‘Bearer ‘ + token
+Por ejemplo, si se quiere realizar un fetch desde javascript para agregar un nuevo equipo debería hacerse lo siguiente
+```javascript
+fetch(‘url/api/equipos’, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + token
+                },
+                mode: 'cors',
+                credentials: 'same-origin',
+                body: JSON.stringify(datos)
+            });
+```
 
 
 ### EQUIPOS:
