@@ -105,9 +105,11 @@ Al momento de acceder a un endpoint para buscar una colección completa tanto de
 de api/jugadores (ambos con el método GET), hay disponible los siguientes queryParams para poder organizar o filtrar los resultados:
 
 - ##### orderBy=:campo&order=:criterio
-Ordena el resultado de la búsqueda según el valor de **:campo** y de forma que se lo indique el atributo **:criterio** (**:campo** debe ser un atributo del recurso). 
+Ordena el resultado de la búsqueda según el valor de **:campo** (debe ser un atributo del recurso) y de forma que se lo indique el atributo **:criterio** (debe ser el formato de ordenamiento. Están disponibles "ASC" o "DESC".). 
+Se puede especificar únicamente el parámetro orderBy. En este caso se retornan todos los registros que coincidan con :campo ordenados de forma ASC.
 
 ##### CAMPOS DISPONIBLES SEGUN RECURSOS:
+
  | EQUIPOS   | 
  | -------------  | 
  | "nombre"   | 
@@ -126,8 +128,6 @@ Ordena el resultado de la búsqueda según el valor de **:campo** y de forma que
 
 
 
-**:criterio** debe ser el formato de ordenamiento. Están disponibles "ASC" o "DESC". 
-Se puede especificar únicamente el parámetro orderBy. En este caso se retornan todos los registros que coincidan con :campo ordenados de forma ASC.
 
 - ##### cantidad=:cant&pagina=:paginas
 Pagina el resultado obtenido de la consulta de acuerdo a la cantidad de registros indicados en :cant y la página que se desea indicado en el valor de :pagina
