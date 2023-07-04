@@ -2,7 +2,7 @@
 
 Para darle funcionalidad a este proyecto y utilizar de manera correcta la API-REST, se debe escribir, siguiendo las instrucciones, las urls que se requieran para evitar posibles errores o inconvenientes.
 
-> ## INDICE<br>
+> ## INDICE
 >https://github.com/fer-gif/FUTBOL5-api/tree/main#importante!<br>
 >https://github.com/fer-gif/FUTBOL5-api/tree/main#token<br>
 >https://github.com/fer-gif/FUTBOL5-api/tree/main#equipos<br>
@@ -17,13 +17,19 @@ las urls en Postman se escriben *'http://localhost/FUTBOL5-api/api/... '   *pero
 
 ### TOKEN:
 Para poder acceder a las acciones de modificacion, agregar o eliminar cualquier registro de las tablas, el usuario debe tener un acceso al token que sera generado a traves de la api.
-Para generar dicho token, el usuario debe loguearse con su usuario y contraseña correspondiente. Y luego de comprobar de que los datos sean correctos la api retornara el token de acceso que deberia ser usado en cada peticion con el metodo POST, PUT O DELETE. Para login de usuario el endpoint disponible "api/login" con metodo POST en el body del login aparecera
-{
-    "usuario":"Admin",
-    "password":"admin1234"
+Para generar dicho token, el usuario debe loguearse con su usuario y contraseña correspondiente. Y luego de comprobar de que los datos sean correctos la api retornara el token de acceso que deberia ser usado en cada peticion con el metodo POST, PUT O DELETE. Para login de usuario el endpoint disponible "api/login" con metodo POST en el body del login aparecera<br>
+{<br>
+    "usuario":"Admin",<br>
+    "password":"admin1234"<br>
 }
 
-Con dicho token generado, en el header de la peticion se debe incluir el atributo 
+La respuesta sera un token que tendra que ser guardado del usuario del lado del front-end para futuras peticiones. El tiempo de validez del token dura 60 minutos. 
+
+>Asi se vera el token generado:
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY4ODQ5MjIxNiwiZXhwIjoxNjg4NDk1ODE2LCJkYXRhIjp7InVzdWFyaW8iOiJBZG1pbiIsInBlcm1pc29zIjo1LCJlcXVpcG8iOm51bGx9fQ==.5bYBKH8n0N5yaiNNNQhiLn292doZs21Y14bWUT7s90U="
+}
+
 
 
 
@@ -126,7 +132,7 @@ Utilizando el verbo **DELETE** y enviando por parametro el **ID**, elimina un pa
 Al momento de acceder a un endpoint para buscar una colección completa tanto del recurso equipos por medio de api/equipos o del recurso jugadores por medio 
 de api/jugadores (ambos con el método GET), hay disponible los siguientes queryParams para poder organizar o filtrar los resultados:
 
->##### TABLAS CON CAMPOS DISPONIBLES SEGUN RECURSOS:
+##### TABLAS CON CAMPOS DISPONIBLES SEGUN RECURSOS:
 
  | EQUIPOS   | 
  | -------------  | 
@@ -173,6 +179,11 @@ Filtrado por un campo filtro y paginado:<br>
 **filter=:filtro&value=:valor&cantidad=:cant&pagina=:paginas**<br>
 Filtrado por un campo filtro, ordenado por un campo y paginado:<br>
 **filter=:filtro&value=:valor&orderBy=:campo&order=:criterio&cantidad=:cant&pagina=:paginas**<br>
+
+>NOTA: Los parametro pueden ubicarse de cualquier forma en la url anteponiendose el endpoint y el signo ?. Asi, la siguientes peticiones son correctas:<br>
+"api/equipos?filter=ciudad&orderBy=nombre&cantidad=5&value=Necochea"<br>
+"api/jugadores?orderBy=edad&order=DESC&cantidad=5&value=null&pagina=2&filter=telefono"<br>
+
 
 
 
