@@ -1,8 +1,9 @@
 # API Proyecto Futbol5
 
 
-**CONTENIDOS**
-[TOC]
+Para darle funcionalidad a este proyecto y utilizar de manera correcta la API-REST, se debe seguir las instrucciones segun que urls se requieran para evitar posibles errores o inconvenientes.
+
+IMPORTANTE: las urls en Postman se escriben 'http://localhost/FUTBOL5-api/api/...' pero en este informe cambiamos esta direccion por 'api/...'.
 
 ### EQUIPOS:
 >* Nota: El Body En  Postman se deberia de escribir de la siguiente manera:
