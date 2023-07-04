@@ -32,9 +32,9 @@ Para generar dicho token, el usuario debe loguearse con su usuario y contraseña
 >- Si se corrobora correctamente el usuario, la respuesta sera un token que tendra que ser guardado por el usuario del lado del front-end para poder realizar futuras peticiones. El tiempo de validez del dura 60 minutos. 
     Asi se vera el la respueseta generada:<br>
     
-    ```JSON
+```JSON
 {
-"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY4ODQ5MjIxNiwiZXhwIjoxNjg4NDk1ODE2LCJkYXRhIjp7InVzdWFyaW8iOiJBZG1pbiIsInBlcm1pc29zIjo1LCJlcXVpcG8iOm51bGx9fQ==.5bYBKH8n0N5yaiNNNQhiLn292doZs21Y14bWUT7s90U="
+"token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY4ODQ5MjIxNiwiZXhwIjoxNjg4NDk1ODE2LCJkYXRhIjp7InVzdWFyaW8iOiJBZG1pbiIsInBlcm1pc29zIjo1LCJlcXVpcG8iOm51bGx9fQ==.5bYBKH8n0N5yaiNNNQhiLn292doZs21Y14bWUT7s90U="
 }
 ```
 
@@ -59,9 +59,9 @@ fetch(‘url/api/equipos’, {
 Usar unicamente cuando se requiera MODIFICAR (PUT) o AGREGAR(POST) un equipo.<br>
 ```JSON
             { 
-                "Nombre":"" //(String),
-                "Ciudad":"" //(String),
-                "Socios":"" //(Number) 
+                "Nombre":"String",
+                "Ciudad":"String",
+                "Socios":"Number" 
             }
 ```
 
@@ -97,13 +97,13 @@ En este caso utilizando el verbo **DELETE** y pasandole nuevamente el **ID** del
 
 ```JSON
 {<br>
-"nombre":""     //(string),
-"apellido":""    //(string),
-"dni" :""        //(number),
-"posicion":""    //(string("POR","DEF","MED","DEL")),
-"telefono":""    //(number), 
-"edad" :""        //(number), 
-"id_equipo":""    //(number) 
+"nombre":"string",
+"apellido":"string",
+"dni" :"number",
+"posicion":"string("POR","DEF","MED","DEL")",
+"telefono":"number", 
+"edad" :"number", 
+"id_equipo":"number" 
 }
 ```
 
@@ -130,11 +130,11 @@ Utilizando el verbo **DELETE** y enviando por parametro el **ID**, elimina un ju
 
 ```JSON
 {
-"id_equipo1":""        //(number),
-"id_equipo2":""        //(number),
-"goles_equipo1" :""    //(number), 
-"goles_equipo2":""    //(number),
-"fecha":""            //(number)
+"id_equipo1":"number",
+"id_equipo2":"number",
+"goles_equipo1" :"number", 
+"goles_equipo2":"number",
+"fecha":"number"
 }
 ```
 
