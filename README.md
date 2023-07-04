@@ -2,7 +2,7 @@
 
 Para darle funcionalidad a este proyecto y utilizar de manera correcta la API-REST, se debe escribir, siguiendo las instrucciones, las urls que se requieran para evitar posibles errores o inconvenientes.
 
-###  IMPORTANTE!
+##  IMPORTANTE!
 las urls en Postman se escriben *'http://localhost/FUTBOL5-api/api/... '   *pero en este informe cambiamos esta direccion por *'api/...'*.
 
 ### EQUIPOS:
@@ -17,28 +17,28 @@ Usar unicamente cuando se requiera MODIFICAR (PUT) o AGREGAR(POST) un equipo.<br
 
 #### *¿Como escribir las urls?*
 
-- ##### api/equipos:
+- #### api/equipos:
 A traves del verbo **GET** traemos todos los equipos que se encuentran en la base de datos.
 
-- ##### api/equipos/:PARAMETRO (ID o NOMBRE):
+- #### api/equipos/:PARAMETRO (ID o NOMBRE):
 Con el verbo **GET** y escribiendo en "**PARAMETRO**" el ID o el nombre del equipo, captamos los datos de ese equipo en particular.
 
 api/equipos/:ID :
 En este caso utilizando el verbo DELETE y pasandole nuevamente el ID del equipo, borramos ese equipo de la base de datos.
 
-- ##### api/equipos/:NOMBRE/jugadores:
+- #### api/equipos/:NOMBRE/jugadores:
 Utilizando nuevamente el verbo **GET** y ademas colocando en "**NOMBRE**" EL nombre del equipo, accedemos a los jugadores que tiene ese equipo.
 
-- ##### api/equipos/:NOMBRE/partidos:
+- #### api/equipos/:NOMBRE/partidos:
 Escribiendo el nombre del equipo que se requiere en "**NOMBRE**" nos traera los partidos que jugaron ese equipo, utilizando el verbo **GET**.
  
-- ##### api/equipos:
+- #### api/equipos:
 Ya aca utilizando el verbo **POST**, a traves del body escribir los campos requeridos, sin utilizar parametros en la URL debe agregar un nuevo equipo a la base de datos.
 
-- ##### api/equipos/:ID :
+- #### api/equipos/:ID :
 Con el verbo **PUT** y pasandole el **ID** del equipo, capturamos el equipo que queremos editar y a traves del body, insertamos en los datos a modificar del equipo.
 
-- ##### api/equipos/:ID :
+- #### api/equipos/:ID :
 En este caso utilizando el verbo **DELETE** y pasandole nuevamente el **ID** del equipo, borramos ese equipo de la base de datos.
 
 
@@ -56,19 +56,19 @@ En este caso utilizando el verbo **DELETE** y pasandole nuevamente el **ID** del
 
 #### *¿Como escribir las urls?*
 
-- ##### api/jugadores:
+- #### api/jugadores:
 A traves del verbo **GET** traemos todos los jugadores que se encuentran en la base de datos.
 
-- ##### api/jugadores/:ID :
+- #### api/jugadores/:ID :
 Con el verbo **GET** traemos un jugador segun su ID.
 
-- ##### api/jugadores
+- #### api/jugadores
 A traves del verbo **POST** y colocando en el body los campos requeridos, se registra un jugador a la base de datos.  Al momento de escribir en el body, en "posicion", los unicos valores que se permiten son : "POR";"DEF";"MED";"DEL".
 
-- ##### api/jugadores/:ID :
+- #### api/jugadores/:ID :
 A traves del verbo **PUT** y pasando por parametro su **ID**, debemos escribir en el body los datos que tenemos que queremos modificar del jugador en particular.
 
-- ##### api/jugadores/:ID :
+- #### api/jugadores/:ID :
 Utilizando el verbo **DELETE** y enviando por parametro el **ID**, elimina un jugador con ese id.
 
 
@@ -84,19 +84,19 @@ Utilizando el verbo **DELETE** y enviando por parametro el **ID**, elimina un ju
 
 #### *¿Como escribir las urls?*
 
-- ##### api/partidos:
+- #### api/partidos:
 A traves del verbo **GET** traemos todos los partidos que se encuentran en la base de datos.
 
-- ##### api/partidos/:ID :
+- #### api/partidos/:ID :
 Con el verbo **GET** traemos un partido en particular segun su ID.
 
-- ##### api/partidos
+- #### api/partidos
 A traves del verbo **POST** y colocando en el body los campos requeridos, se registra un partido a la base de datos. 
 
-- ##### api/partidos/:ID :
+- #### api/partidos/:ID :
 A traves del verbo **PUT** y pasando por parametro su **ID**, debemos escribir en el body los datos que tenemos que queremos modificar del partido en particular.
 
-- ##### api/partidos/:ID :
+- #### api/partidos/:ID :
 Utilizando el verbo **DELETE** y enviando por parametro el **ID**, elimina un partido con ese id.
 
 
@@ -104,7 +104,7 @@ Utilizando el verbo **DELETE** y enviando por parametro el **ID**, elimina un pa
 Al momento de acceder a un endpoint para buscar una colección completa tanto del recurso equipos por medio de api/equipos o del recurso jugadores por medio 
 de api/jugadores (ambos con el método GET), hay disponible los siguientes queryParams para poder organizar o filtrar los resultados:
 
-- ##### orderBy=:campo&order=:criterio
+- #### orderBy=:campo&order=:criterio
 Ordena el resultado de la búsqueda según el valor de **:campo** (debe ser un atributo del recurso) y de forma que se lo indique el atributo **:criterio** (debe ser el formato de ordenamiento. Están disponibles "ASC" o "DESC".). 
 Se puede especificar únicamente el parámetro orderBy. En este caso se retornan todos los registros que coincidan con :campo ordenados de forma ASC.
 
@@ -129,20 +129,22 @@ Se puede especificar únicamente el parámetro orderBy. En este caso se retornan
 
 
 
-+ ##### cantidad=:cant&pagina=:paginas
++ #### cantidad=:cant&pagina=:paginas
 Pagina el resultado obtenido de la consulta de acuerdo a la cantidad de registros indicados en **:cant** y la página que se desea indicado en el valor de **:pagina**.
-(**:cant** indica la cantidad de registros que se desean obtener de la consulta realizada).
-(**:pagina** indica el numero de pagina que se desea obtener a partir del atributo :cant especificado).
+   + **:cant** indica la cantidad de registros que se desean obtener de la consulta realizada.
+   + **:pagina** indica el numero de pagina que se desea obtener a partir del atributo :cant especificado.
 
 >EJEMPLO: **'cantidad=10&pagina=2'**
 Retornara la segunda página de los registros agrupados de a 10. Se puede especificar únicamente el parámetro cantidad. En este caso se retornan los primero **:cant** registros de la consulta. cantidad=7 retornara la primera página de los registros agrupados de a 7 elementos.
 
-- ##### filter=:filtro&value=:valor
-Filtra el resultado de la búsqueda retornando los registros que en su atributo :filtro coincida con el valor que se le indica en :valor
+- #### filter=:filtro&value=:valor
+Filtra el resultado de la búsqueda retornando los registros que en su atributo **:filtro** coincida con el valor que se le indica en **:valor**
 **:filtro** indica el atributo por el cual se desea realizar la búsqueda. Para el recurso jugadores estan disponibles los valores "nombre", "apellido", "dni",
 "edad","posicion" y "telefono". Para el recurso equipos están disponible los valores "nombre", "ciudad" y "socios"
 :valor indica el valor por el cual queremos filtrar el recurso.
 Siempre que se indique el parámetro filter se debe indicar el parámetro value. En caso contrario se retorna el recurso sin ser filtrado.
+
+
 
 Los queryParams pueden combinarse para obtener resultados más precisos. Así se pueden tener las siguientes combinaciones:
 
