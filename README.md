@@ -34,8 +34,7 @@ Para generar dicho token, el usuario debe loguearse con su usuario y contraseña
     
     ```JSON
 {
-    "token": 
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY4ODQ5MjIxNiwiZXhwIjoxNjg4NDk1ODE2LCJkYXRhIjp7InVzdWFyaW8iOiJBZG1pbiIsInBlcm1pc29zIjo1LCJlcXVpcG8iOm51bGx9fQ==.5bYBKH8n0N5yaiNNNQhiLn292doZs21Y14bWUT7s90U="
+"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY4ODQ5MjIxNiwiZXhwIjoxNjg4NDk1ODE2LCJkYXRhIjp7InVzdWFyaW8iOiJBZG1pbiIsInBlcm1pc29zIjo1LCJlcXVpcG8iOm51bGx9fQ==.5bYBKH8n0N5yaiNNNQhiLn292doZs21Y14bWUT7s90U="
 }
 ```
 
