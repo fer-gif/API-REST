@@ -17,17 +17,19 @@ las urls en Postman se escriben *'http://localhost/FUTBOL5-api/api/... '   *pero
 
 ### TOKEN:
 Para poder acceder a las acciones de modificacion, agregar o eliminar cualquier registro de las tablas, el usuario debe tener un acceso al token que sera generado a traves de la api.
-Para generar dicho token, el usuario debe loguearse con su usuario y contraseña correspondiente. Y luego de comprobar de que los datos sean correctos la api retornara el token de acceso que deberia ser usado en cada peticion con el metodo POST, PUT O DELETE. Para login de usuario el endpoint disponible "api/login" con metodo POST en el body del login aparecera<br>
+Para generar dicho token, el usuario debe loguearse con su usuario y contraseña correspondiente. Y luego de comprobar de que los datos sean correctos la api retornara el token de acceso que deberia ser usado en cada peticion con el metodo POST, PUT O DELETE. 
+
+
+- Para login de usuario el endpoint disponible "api/login" con metodo POST en el body del login aparecera:<br>
+    {<br>
+        "usuario":"Admin",<br>
+        "password":"admin1234"<br>
+    }
+- Si se corrobora correctamente el usuario, la respuesta sera un token que tendra que ser guardado por el usuario del lado del front-end para poder realizar futuras peticiones. El tiempo de validez del token dura 60 minutos. 
+    Asi se vera el token generado:<br>
 {<br>
-    "usuario":"Admin",<br>
-    "password":"admin1234"<br>
-}
-
-La respuesta sera un token que tendra que ser guardado del usuario del lado del front-end para futuras peticiones. El tiempo de validez del token dura 60 minutos. 
-
->Asi se vera el token generado:
-{
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY4ODQ5MjIxNiwiZXhwIjoxNjg4NDk1ODE2LCJkYXRhIjp7InVzdWFyaW8iOiJBZG1pbiIsInBlcm1pc29zIjo1LCJlcXVpcG8iOm51bGx9fQ==.5bYBKH8n0N5yaiNNNQhiLn292doZs21Y14bWUT7s90U="
+    "token": <br>
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY4ODQ5MjIxNiwiZXhwIjoxNjg4NDk1ODE2LCJkYXRhIjp7InVzdWFyaW8iOiJBZG1pbiIsInBlcm1pc29zIjo1LCJlcXVpcG8iOm51bGx9fQ==.5bYBKH8n0N5yaiNNNQhiLn292doZs21Y14bWUT7s90U="<br>
 }
 
 
