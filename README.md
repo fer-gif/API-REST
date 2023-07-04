@@ -108,20 +108,6 @@ de api/jugadores (ambos con el método GET), hay disponible los siguientes query
 Ordena el resultado de la búsqueda según el valor de **:campo** y de forma que se lo indique el atributo **:criterio** (**:campo** debe ser un atributo del recurso). 
 
 ##### CAMPOS DISPONIBLES SEGUN RECURSOS:
- | EQUIPOS    | 
- | -------------  | 
- | "nombre"   | 
- | "ciudad"   | 
- | "socios"   | 
-
- |JUGADORES   | 
- | -------------  | 
- | "nombre"   | 
- | "apellido" | 
- | "dni"      | 
- | "posicion" |
- |"telefono"  |
- |  "edad"    |
 
 EQUIPOS  | JUGADORES
 ---------| -------------
