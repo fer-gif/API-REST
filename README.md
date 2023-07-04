@@ -5,9 +5,9 @@ Para darle funcionalidad a este proyecto y utilizar de manera correcta la API-RE
 ##  IMPORTANTE!
 las urls en Postman se escriben *'http://localhost/FUTBOL5-api/api/... '   *pero en este informe cambiamos esta direccion por *'api/...'*.
 
-[TOCM]
+**[TOCM]
 
-[TOC]
+[TOC]**
 
 ### TOKEN:
 Para poder acceder a las acciones de modificacion, agregar o eliminar cualquier registro de las tablas, el usuario debe tener un acceso al token que sera generado a traves de la api.
