@@ -5,6 +5,22 @@ Para darle funcionalidad a este proyecto y utilizar de manera correcta la API-RE
 ##  IMPORTANTE!
 las urls en Postman se escriben *'http://localhost/FUTBOL5-api/api/... '   *pero en este informe cambiamos esta direccion por *'api/...'*.
 
+[TOCM]
+
+[TOC]
+
+### TOKEN:
+Para poder acceder a las acciones de modificacion, agregar o eliminar cualquier registro de las tablas, el usuario debe tener un acceso al token que sera generado a traves de la api.
+Para generar dicho token, el usuario debe loguearse con su usuario y contraseña correspondiente. Y luego de comprobar de que los datos sean correctos la api retornara el token de acceso que deberia ser usado en cada peticion con el metodo POST, PUT O DELETE. Para login de usuario el endpoint disponible "api/login" con metodo POST en el body del login aparecera
+{
+    "usuario":"Admin",
+    "password":"admin1234"
+}
+
+Con dicho token generado, en el header de la peticion se debe incluir el atributo 
+
+
+
 ### EQUIPOS:
 >* Nota: El Body En  Postman se deberia de escribir de la siguiente manera:
 Usar unicamente cuando se requiera MODIFICAR (PUT) o AGREGAR(POST) un equipo.<br>
@@ -153,12 +169,4 @@ Filtrado por un campo filtro, ordenado por un campo y paginado:<br>
 **filter=:filtro&value=:valor&orderBy=:campo&order=:criterio&cantidad=:cant&pagina=:paginas**<br>
 
 
-### TOKEN:
-Para poder acceder a las acciones de modificacion, agregar o eliminar cualquier registro de las tablas, el usuario debe tener un acceso al token que sera generado a traves de la api.
-Para generar dicho token, el usuario debe loguearse con su usuario y contraseña correspondiente. Y luego de comprobar de que los datos sean correctos la api retornara el token de acceso que deberia ser usado en cada peticion con el metodo POST, PUT O DELETE. Para login de usuario el endpoint disponible "api/login" con metodo POST en el body del login aparecera
-{
-    "usuario":"Admin",
-    "password":"admin1234"
-}
 
-Con dicho token generado, en el header de la peticion se debe incluir el atributo 
