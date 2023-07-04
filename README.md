@@ -67,9 +67,6 @@ Usar unicamente cuando se requiera MODIFICAR (PUT) o AGREGAR(POST) un equipo.<br
 ```
 
 #### *¿Como escribir las urls?*
-```{.highlight .highlight-green}
-api/equipos
-```
 
 - #### api/equipos:
 
