@@ -108,15 +108,29 @@ de api/jugadores (ambos con el método GET), hay disponible los siguientes query
 Ordena el resultado de la búsqueda según el valor de **:campo** y de forma que se lo indique el atributo **:criterio** (**:campo** debe ser un atributo del recurso). 
 
 ##### CAMPOS DISPONIBLES SEGUN RECURSOS:
+ | EQUIPOS    | 
+ | -------------  | 
+ | "nombre"   | 
+ | "ciudad"   | 
+ | "socios"   | 
+
+ |JUGADORES   | 
+ | -------------  | 
+ | "nombre"   | 
+ | "apellido" | 
+ | "dni"      | 
+ | "posicion" |
+ |"telefono"  |
+ |  "edad"    |
 
 EQUIPOS  | JUGADORES
 ---------| -------------
 "nombre"  | "nombre"
 "ciudad"  | "apellido" 
 "socios"  | "dni"
-|"posicion"
-|"telefono"
-| "edad"
+""        |"posicion"
+""        |"telefono"
+""        | "edad"
 
 **:criterio** debe ser el formato de ordenamiento. Están disponibles "ASC" o "DESC". 
 Se puede especificar únicamente el parámetro orderBy. En este caso se retornan todos los registros que coincidan con :campo ordenados de forma ASC.
