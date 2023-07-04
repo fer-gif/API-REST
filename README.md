@@ -21,18 +21,23 @@ Para generar dicho token, el usuario debe loguearse con su usuario y contraseña
 
 
 >- Para login de usuario el endpoint disponible "api/login" con metodo POST en el body del login aparecera:<br>
+
 ```JSON
     {
         "usuario":"Admin",
         "password":"admin1234"
     }
 ```
+
 >- Si se corrobora correctamente el usuario, la respuesta sera un token que tendra que ser guardado por el usuario del lado del front-end para poder realizar futuras peticiones. El tiempo de validez del dura 60 minutos. 
     Asi se vera el la respueseta generada:<br>
+    
+    ```JSON
 {<br>
     "token": <br>
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY4ODQ5MjIxNiwiZXhwIjoxNjg4NDk1ODE2LCJkYXRhIjp7InVzdWFyaW8iOiJBZG1pbiIsInBlcm1pc29zIjo1LCJlcXVpcG8iOm51bGx9fQ==.5bYBKH8n0N5yaiNNNQhiLn292doZs21Y14bWUT7s90U="<br>
 }
+```
 
 Al momento de realizar una petición a la API con un método POST, PUT o DELETE, se debe incluir en el header del mensaje el atributo ‘Authorization’ : ‘Bearer ‘ + token
 Por ejemplo, si se quiere realizar un fetch desde javascript para agregar un nuevo equipo debería hacerse lo siguiente
@@ -53,12 +58,13 @@ fetch(‘url/api/equipos’, {
 ### EQUIPOS:
 >* Nota: El Body En  Postman se deberia de escribir de la siguiente manera:
 Usar unicamente cuando se requiera MODIFICAR (PUT) o AGREGAR(POST) un equipo.<br>
+```JSON
             { <br>
                 "Nombre":......(String),<br>
                 "Ciudad":.......(String),<br>
                 "Socios":......(Number) <br>
             }
-
+```
 
 #### *¿Como escribir las urls?*
 
@@ -89,6 +95,8 @@ En este caso utilizando el verbo **DELETE** y pasandole nuevamente el **ID** del
 
 ### JUGADORES:
 > NOTA: el body en el Postman para jugadores se escribe de la siguiente manera.Usar unicamente cuando se requiera MODIFICAR (PUT) o AGREGAR(POST) un jugador.<br>
+
+```JSON
 {<br>
 "nombre":....(string),<br>
 "apellido":.....(string),<br>
@@ -98,6 +106,7 @@ En este caso utilizando el verbo **DELETE** y pasandole nuevamente el **ID** del
 "edad" :....(number), <br>
 "id_equipo":.....(number) <br>
 }
+```
 
 #### *¿Como escribir las urls?*
 
@@ -119,6 +128,8 @@ Utilizando el verbo **DELETE** y enviando por parametro el **ID**, elimina un ju
 
 ### PARTIDOS: 
 > NOTA: el body en el Postman para partidos se escribe de la siguiente manera. Usar unicamente cuando se requiera MODIFICAR (PUT) o AGREGAR(POST) un partido.<br>
+
+```JSON
 {<br>
 "id_equipo1":....(number),<br>
 "id_equipo2":.....(number),<br>
@@ -126,6 +137,7 @@ Utilizando el verbo **DELETE** y enviando por parametro el **ID**, elimina un ju
 "goles_equipo2":.....(number),<br>
 "fecha":......(number)<br>
 }
+```
 
 #### *¿Como escribir las urls?*
 
