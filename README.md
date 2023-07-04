@@ -67,7 +67,7 @@ Usar unicamente cuando se requiera MODIFICAR (PUT) o AGREGAR(POST) un equipo.<br
 ```
 
 #### *¿Como escribir las urls?*
-```{.highlight .highlight-black}
+```{.highlight.highlight-green}
 - #### api/equipos:
 ```
 A traves del verbo **GET** traemos todos los equipos que se encuentran en la base de datos.
