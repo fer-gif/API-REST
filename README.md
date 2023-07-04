@@ -2,12 +2,18 @@
 
 Para darle funcionalidad a este proyecto y utilizar de manera correcta la API-REST, se debe escribir, siguiendo las instrucciones, las urls que se requieran para evitar posibles errores o inconvenientes.
 
+> ## INDICE
+>https://github.com/fer-gif/FUTBOL5-api/tree/main#importante!
+>https://github.com/fer-gif/FUTBOL5-api/tree/main#token
+>https://github.com/fer-gif/FUTBOL5-api/tree/main#equipos
+>https://github.com/fer-gif/FUTBOL5-api/tree/main#jugadores
+>https://github.com/fer-gif/FUTBOL5-api/tree/main#partidos
+>https://github.com/fer-gif/FUTBOL5-api/tree/main#query-params
+
 ##  IMPORTANTE!
 las urls en Postman se escriben *'http://localhost/FUTBOL5-api/api/... '   *pero en este informe cambiamos esta direccion por *'api/...'*.
 
-**[TOCM]
 
-[TOC]**
 
 ### TOKEN:
 Para poder acceder a las acciones de modificacion, agregar o eliminar cualquier registro de las tablas, el usuario debe tener un acceso al token que sera generado a traves de la api.
