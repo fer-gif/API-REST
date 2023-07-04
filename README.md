@@ -131,8 +131,8 @@ Se puede especificar únicamente el parámetro orderBy. En este caso se retornan
 
 + ##### cantidad=:cant&pagina=:paginas
 Pagina el resultado obtenido de la consulta de acuerdo a la cantidad de registros indicados en **:cant** y la página que se desea indicado en el valor de **:pagina**.
-  * **:cant** indica la cantidad de registros que se desean obtener de la consulta realizada. 
-  * **:pagina** indica el numero de pagina que se desea obtener a partir del atributo :cant especificado.
+    * **:cant** indica la cantidad de registros que se desean obtener de la consulta realizada. 
+    * **:pagina** indica el numero de pagina que se desea obtener a partir del atributo :cant especificado.
 
 >EJEMPLO: **'cantidad=10&pagina=2'**
 Retornara la segunda página de los registros agrupados de a 10. Se puede especificar únicamente el parámetro cantidad. En este caso se retornan los primero **:cant** registros de la consulta. cantidad=7 retornara la primera página de los registros agrupados de a 7 elementos.
